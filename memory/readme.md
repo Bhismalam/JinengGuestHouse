@@ -42,5 +42,11 @@ Dokumen ini digunakan untuk mencatat riwayat pekerjaan, keputusan arsitektur, da
   - **Alamat**: Mengatur alamat lengkap menjadi `Jineng Guest House D47, Canggu, Bali, Indonesia`.
   - **Tarif Malam**: Menyesuaikan tarif per malam menjadi dari `$35` (Rp 500rb-an) per malam di `index.html` dan `checkout.js`.
   - **Deskripsi & Fasilitas**: Memperbarui penjelasan Jineng Suite sesuai karakteristik asli (mezzanine loft, dinding bata merah ekspos, pantry semi-outdoor, lounge kayu jati, smart TV, Wi-Fi cepat, & AC).
+- **Fitur Baru Tambahan**:
+  - **Sanctuary Gallery Filter & Lightbox Modal**: Penambahan section galeri interaktif dengan filter kategori (*ALL, BEDROOM & LOFT, KITCHEN & PANTRY, GARDEN & OUTDOOR*) dan fitur Lightbox Modal (klik foto untuk Zoom View full-screen).
+  - **Guest Reviews / Testimonials**: Kartu ulasan bintang 5 autentik dari tamu mancanegara & domestik beserta lencana *Verified Stay*.
+  - **FAQ Accordion**: 5 pertanyaan umum yang dapat di-expand/collapse secara interaktif untuk menjawab pertanyaan seputar check-in, fasilitas, lokasi, parkir, dan pembayaran.
+  - **Optimasi SEO**: Menambahkan meta description, Open Graph (OG) tags social preview, dan Favicon SVG 🌿.
 - **Status Build**: Berhasil di-build tanpa error dengan Vite v5. All assets bundled to `dist/assets/`.
+
 

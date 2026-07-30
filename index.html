@@ -26,10 +26,13 @@
       <a class="font-headline-md text-headline-md text-primary dark:text-primary-fixed tracking-tight hover:opacity-80 transition-opacity" href="#">
         JINENG GUESTHOUSE
       </a>
-      <nav class="hidden md:flex gap-8 items-center">
-        <a class="text-primary font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors duration-300 scale-95" href="#sanctuary">Sanctuary</a>
+      <nav class="hidden md:flex gap-6 items-center text-sm">
+        <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-300" href="#sanctuary">Sanctuary</a>
         <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-300" href="#suite">The Suite</a>
+        <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-300" href="#gallery">Gallery</a>
         <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-300" href="#amenities">Essentials</a>
+        <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-300" href="#reviews">Reviews</a>
+        <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-300" href="#faq">FAQ</a>
         <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-300" href="#location">Location</a>
       </nav>
       <a class="bg-primary text-on-primary px-6 py-3 rounded-full font-body-md text-body-md hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 shadow-md flex items-center gap-2" href="#booking">
@@ -93,14 +96,14 @@
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mb-12">
         <div class="rounded-2xl overflow-hidden h-[450px] shadow-sm">
-          <img alt="The Jineng Suite - Bedroom Loft" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="./assets/WhatsApp Image 2026-07-27 at 12.03.32.jpeg"/>
+          <img alt="The Jineng Suite - Bedroom Loft" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 cursor-pointer gallery-trigger" src="./assets/WhatsApp Image 2026-07-27 at 12.03.32.jpeg"/>
         </div>
         <div class="grid grid-rows-2 gap-gutter h-[450px]">
           <div class="rounded-2xl overflow-hidden shadow-sm">
-            <img alt="Mezzanine Wooden Stairs & Exposed Brick" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="./assets/WhatsApp Image 2026-07-27 at 12.03.33.jpeg"/>
+            <img alt="Mezzanine Wooden Stairs & Exposed Brick" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 cursor-pointer gallery-trigger" src="./assets/WhatsApp Image 2026-07-27 at 12.03.33.jpeg"/>
           </div>
           <div class="rounded-2xl overflow-hidden shadow-sm">
-            <img alt="Cozy Teak Lounge & Coffee Station" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="./assets/WhatsApp Image 2026-07-27 at 12.03.34.jpeg"/>
+            <img alt="Cozy Teak Lounge & Coffee Station" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 cursor-pointer gallery-trigger" src="./assets/WhatsApp Image 2026-07-27 at 12.03.34.jpeg"/>
           </div>
         </div>
       </div>
@@ -147,44 +150,85 @@
       </div>
     </section>
 
-    <!-- Visual Gallery Showcase -->
-    <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-section-gap">
-      <div class="mb-10 text-center md:text-left">
-        <h2 class="font-headline-md text-headline-md text-primary mb-2">Experience Jineng</h2>
-        <p class="font-body-md text-body-md text-on-surface-variant">A glance into your peaceful tropical sanctuary</p>
+    <!-- Interactive Lightbox Gallery Filter Section -->
+    <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-section-gap pt-8" id="gallery">
+      <div class="mb-10 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <h2 class="font-headline-md text-headline-md text-primary mb-2">Sanctuary Gallery</h2>
+          <p class="font-body-md text-body-md text-on-surface-variant">Explore every corner of Jineng Guest House D47</p>
+        </div>
+        <!-- Gallery Filter Buttons -->
+        <div class="flex flex-wrap gap-2 justify-center md:justify-end" id="gallery-filters">
+          <button class="gallery-filter-btn px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-all bg-primary text-on-primary shadow-sm" data-filter="all">ALL</button>
+          <button class="gallery-filter-btn px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-all bg-surface-container text-on-surface hover:bg-surface-container-high" data-filter="bedroom">BEDROOM & LOFT</button>
+          <button class="gallery-filter-btn px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-all bg-surface-container text-on-surface hover:bg-surface-container-high" data-filter="kitchen">KITCHEN & PANTRY</button>
+          <button class="gallery-filter-btn px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-all bg-surface-container text-on-surface hover:bg-surface-container-high" data-filter="outdoor">GARDEN & OUTDOOR</button>
+        </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-        <div class="bg-surface-container rounded-2xl overflow-hidden shadow-sm flex flex-col">
-          <div class="h-64 overflow-hidden">
-            <img alt="Private Veranda & Room Entrance RAMA" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="./assets/WhatsApp Image 2026-07-27 at 12.03.35.jpeg"/>
-          </div>
-          <div class="p-6 flex-grow flex flex-col justify-between">
-            <div>
-              <h3 class="font-headline-md text-lg text-primary mb-2">Private Veranda</h3>
-              <p class="font-body-md text-sm text-on-surface-variant">Step outside your room into lush tropical foliage and woven bamboo lamps.</p>
-            </div>
+
+      <!-- Gallery Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4" id="gallery-grid">
+        <div class="gallery-item bedroom group relative h-64 rounded-2xl overflow-hidden cursor-pointer shadow-sm" data-src="./assets/WhatsApp Image 2026-07-27 at 12.03.32.jpeg" data-caption="Jineng Mezzanine Bed Loft & Teak Ceiling">
+          <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Jineng Mezzanine Bed Loft" src="./assets/WhatsApp Image 2026-07-27 at 12.03.32.jpeg"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 text-white">
+            <span class="text-xs font-label-caps text-surface-variant mb-1">BEDROOM & LOFT</span>
+            <p class="font-body-md text-sm font-semibold">Jineng Mezzanine Loft Bed</p>
           </div>
         </div>
-        <div class="bg-surface-container rounded-2xl overflow-hidden shadow-sm flex flex-col">
-          <div class="h-64 overflow-hidden">
-            <img alt="Semi-Outdoor Kitchenette" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="./assets/WhatsApp Image 2026-07-27 at 12.03.35 (1).jpeg"/>
-          </div>
-          <div class="p-6 flex-grow flex flex-col justify-between">
-            <div>
-              <h3 class="font-headline-md text-lg text-primary mb-2">Semi-Outdoor Kitchenette</h3>
-              <p class="font-body-md text-sm text-on-surface-variant">Enjoy fresh drinks and meals at your private high-table dining bar.</p>
-            </div>
+
+        <div class="gallery-item bedroom group relative h-64 rounded-2xl overflow-hidden cursor-pointer shadow-sm" data-src="./assets/WhatsApp Image 2026-07-27 at 12.03.33.jpeg" data-caption="Mezzanine Wooden Stairs & Exposed Red Brick Wall">
+          <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Wooden Loft Stairs & Brick Wall" src="./assets/WhatsApp Image 2026-07-27 at 12.03.33.jpeg"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 text-white">
+            <span class="text-xs font-label-caps text-surface-variant mb-1">BEDROOM & LOFT</span>
+            <p class="font-body-md text-sm font-semibold">Wooden Stairs & Brick Aesthetics</p>
           </div>
         </div>
-        <div class="bg-surface-container rounded-2xl overflow-hidden shadow-sm flex flex-col">
-          <div class="h-64 overflow-hidden">
-            <img alt="Teak & Brick Interior Details" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="./assets/WhatsApp Image 2026-07-27 at 12.03.34 (1).jpeg"/>
+
+        <div class="gallery-item bedroom group relative h-64 rounded-2xl overflow-hidden cursor-pointer shadow-sm" data-src="./assets/WhatsApp Image 2026-07-27 at 12.03.34.jpeg" data-caption="Cozy Teak Wood Seating Lounge & Kettle Station">
+          <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Teak Wood Seating Lounge" src="./assets/WhatsApp Image 2026-07-27 at 12.03.34.jpeg"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 text-white">
+            <span class="text-xs font-label-caps text-surface-variant mb-1">BEDROOM & LOFT</span>
+            <p class="font-body-md text-sm font-semibold">Teak Lounge & Coffee Station</p>
           </div>
-          <div class="p-6 flex-grow flex flex-col justify-between">
-            <div>
-              <h3 class="font-headline-md text-lg text-primary mb-2">Warm Rustic Craftsmanship</h3>
-              <p class="font-body-md text-sm text-on-surface-variant">Thoughtful blend of natural clay bricks, polished wood, and cozy lighting.</p>
-            </div>
+        </div>
+
+        <div class="gallery-item bedroom group relative h-64 rounded-2xl overflow-hidden cursor-pointer shadow-sm" data-src="./assets/WhatsApp Image 2026-07-27 at 12.03.34 (1).jpeg" data-caption="Handcrafted Wooden Door & Exposed Clay Bricks">
+          <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Wooden Door & Exposed Bricks" src="./assets/WhatsApp Image 2026-07-27 at 12.03.34 (1).jpeg"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 text-white">
+            <span class="text-xs font-label-caps text-surface-variant mb-1">BEDROOM & LOFT</span>
+            <p class="font-body-md text-sm font-semibold">Interior Teak & Brickwork</p>
+          </div>
+        </div>
+
+        <div class="gallery-item outdoor group relative h-64 rounded-2xl overflow-hidden cursor-pointer shadow-sm" data-src="./assets/WhatsApp Image 2026-07-27 at 12.03.35.jpeg" data-caption="Private Veranda & Room Entrance 'RAMA'">
+          <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Private Room Veranda RAMA" src="./assets/WhatsApp Image 2026-07-27 at 12.03.35.jpeg"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 text-white">
+            <span class="text-xs font-label-caps text-surface-variant mb-1">GARDEN & OUTDOOR</span>
+            <p class="font-body-md text-sm font-semibold">Private Veranda Entrance</p>
+          </div>
+        </div>
+
+        <div class="gallery-item kitchen group relative h-64 rounded-2xl overflow-hidden cursor-pointer shadow-sm" data-src="./assets/WhatsApp Image 2026-07-27 at 12.03.35 (1).jpeg" data-caption="Semi-Outdoor Pantry & High-Table Dining Bar">
+          <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Semi-Outdoor Kitchenette" src="./assets/WhatsApp Image 2026-07-27 at 12.03.35 (1).jpeg"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 text-white">
+            <span class="text-xs font-label-caps text-surface-variant mb-1">KITCHEN & PANTRY</span>
+            <p class="font-body-md text-sm font-semibold">Semi-Outdoor Kitchenette</p>
+          </div>
+        </div>
+
+        <div class="gallery-item outdoor group relative h-64 rounded-2xl overflow-hidden cursor-pointer shadow-sm" data-src="./assets/WhatsApp Image 2026-07-27 at 12.03.36.jpeg" data-caption="Tropical Garden Pathway with Stepping Stones">
+          <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Tropical Garden Pathway" src="./assets/WhatsApp Image 2026-07-27 at 12.03.36.jpeg"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 text-white">
+            <span class="text-xs font-label-caps text-surface-variant mb-1">GARDEN & OUTDOOR</span>
+            <p class="font-body-md text-sm font-semibold">Tropical Garden Pathway</p>
+          </div>
+        </div>
+
+        <div class="gallery-item outdoor group relative h-64 rounded-2xl overflow-hidden cursor-pointer shadow-sm" data-src="./assets/WhatsApp Image 2026-07-30 at 09.15.21.jpeg" data-caption="Jineng Guest House D47 Main Entrance Signboard">
+          <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Entrance Facade D47" src="./assets/WhatsApp Image 2026-07-30 at 09.15.21.jpeg"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 text-white">
+            <span class="text-xs font-label-caps text-surface-variant mb-1">GARDEN & OUTDOOR</span>
+            <p class="font-body-md text-sm font-semibold">Jineng Guest House D47 Entrance</p>
           </div>
         </div>
       </div>
@@ -227,6 +271,160 @@
       </div>
     </section>
 
+    <!-- Guest Reviews / Testimonials Section -->
+    <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-section-gap pt-8" id="reviews">
+      <div class="text-center mb-12">
+        <span class="font-label-caps text-xs text-secondary font-bold uppercase tracking-widest block mb-2">Guest Testimonials</span>
+        <h2 class="font-headline-md text-headline-md text-primary mb-4">Loved by Travelers Worldwide</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">Discover what guests say about their tranquil stay at Jineng Guest House D47.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+        <!-- Review Card 1 -->
+        <div class="bg-surface-container rounded-2xl p-8 shadow-sm border border-surface-variant/30 flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div>
+            <div class="flex items-center gap-1 text-[#e5a93c] mb-4">
+              <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+            </div>
+            <p class="font-body-md text-on-surface-variant mb-6 italic leading-relaxed">
+              "An absolute hidden gem in Canggu! The Jineng mezzanine bed loft was incredibly cozy and the exposed red brickwork gave it so much character. Walking 5 minutes to Echo Beach every morning was the highlight of my stay."
+            </p>
+          </div>
+          <div class="flex items-center gap-4 pt-4 border-t border-surface-variant/30">
+            <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-lg">
+              OS
+            </div>
+            <div>
+              <h4 class="font-headline-md text-base text-primary">Oliver Smith</h4>
+              <p class="text-xs text-tertiary">Melbourne, Australia 🇦🇺 • Verified Stay</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review Card 2 -->
+        <div class="bg-surface-container rounded-2xl p-8 shadow-sm border border-surface-variant/30 flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div>
+            <div class="flex items-center gap-1 text-[#e5a93c] mb-4">
+              <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+            </div>
+            <p class="font-body-md text-on-surface-variant mb-6 italic leading-relaxed">
+              "We loved the peaceful tropical vibe. Having our own semi-outdoor kitchenette for morning coffees surrounded by lush plants made it feel like a private sanctuary. Excellent Wi-Fi for remote work too!"
+            </p>
+          </div>
+          <div class="flex items-center gap-4 pt-4 border-t border-surface-variant/30">
+            <div class="w-12 h-12 rounded-full bg-secondary/10 text-secondary flex items-center justify-center font-bold text-lg">
+              EL
+            </div>
+            <div>
+              <h4 class="font-headline-md text-base text-primary">Emma & Lucas</h4>
+              <p class="text-xs text-tertiary">Paris, France 🇫🇷 • Verified Stay</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review Card 3 -->
+        <div class="bg-surface-container rounded-2xl p-8 shadow-sm border border-surface-variant/30 flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div>
+            <div class="flex items-center gap-1 text-[#e5a93c] mb-4">
+              <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+            </div>
+            <p class="font-body-md text-on-surface-variant mb-6 italic leading-relaxed">
+              "Tempatnya sangat bersih dan tenang, arsitektur kayu Jineng khas Bali dipadu bata merahnya estetik sekali. Respon admin WhatsApp sangat cepat dan ramah. Pasti bakal balik lagi ke Jineng D47!"
+            </p>
+          </div>
+          <div class="flex items-center gap-4 pt-4 border-t border-surface-variant/30">
+            <div class="w-12 h-12 rounded-full bg-tertiary/10 text-tertiary flex items-center justify-center font-bold text-lg">
+              BS
+            </div>
+            <div>
+              <h4 class="font-headline-md text-base text-primary">Bambang & Sarah</h4>
+              <p class="text-xs text-tertiary">Jakarta, Indonesia 🇮🇩 • Verified Stay</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section (Accordion) -->
+    <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-section-gap pt-8" id="faq">
+      <div class="bg-surface-container-low rounded-3xl p-8 md:p-16 border border-surface-variant/40">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="font-label-caps text-xs text-secondary font-bold uppercase tracking-widest block mb-2">Help & Answers</span>
+          <h2 class="font-headline-md text-headline-md text-primary mb-4">Frequently Asked Questions</h2>
+          <p class="font-body-md text-body-md text-on-surface-variant">Got questions about your stay at Jineng Guest House? We've got answers.</p>
+        </div>
+
+        <div class="max-w-3xl mx-auto space-y-4" id="faq-accordion">
+          <!-- FAQ Item 1 -->
+          <div class="faq-item bg-surface rounded-2xl border border-surface-variant/50 overflow-hidden transition-all duration-300">
+            <button class="faq-btn w-full p-6 text-left flex justify-between items-center font-headline-md text-lg text-primary hover:text-secondary transition-colors focus:outline-none">
+              <span>What are the Check-in and Check-out times?</span>
+              <span class="material-symbols-outlined faq-icon transition-transform duration-300 text-tertiary">expand_more</span>
+            </button>
+            <div class="faq-content hidden px-6 pb-6 text-on-surface-variant font-body-md text-sm leading-relaxed border-t border-surface-variant/20 pt-4">
+              Check-in begins at 14:00 (2:00 PM) and Check-out is until 12:00 PM (Noon). If you require early check-in or late check-out, please let us know in advance via WhatsApp and we will gladly accommodate your request based on room availability.
+            </div>
+          </div>
+
+          <!-- FAQ Item 2 -->
+          <div class="faq-item bg-surface rounded-2xl border border-surface-variant/50 overflow-hidden transition-all duration-300">
+            <button class="faq-btn w-full p-6 text-left flex justify-between items-center font-headline-md text-lg text-primary hover:text-secondary transition-colors focus:outline-none">
+              <span>What amenities are included in the Jineng Suite?</span>
+              <span class="material-symbols-outlined faq-icon transition-transform duration-300 text-tertiary">expand_more</span>
+            </button>
+            <div class="faq-content hidden px-6 pb-6 text-on-surface-variant font-body-md text-sm leading-relaxed border-t border-surface-variant/20 pt-4">
+              Each Jineng Suite comes equipped with a mezzanine king bed loft, climate-controlled Air Conditioning, high-speed Wi-Fi, Smart TV, solid teak wood seating lounge, private semi-outdoor kitchenette with mineral water dispenser, private bathroom with hot water, and a tropical garden veranda.
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="faq-item bg-surface rounded-2xl border border-surface-variant/50 overflow-hidden transition-all duration-300">
+            <button class="faq-btn w-full p-6 text-left flex justify-between items-center font-headline-md text-lg text-primary hover:text-secondary transition-colors focus:outline-none">
+              <span>How far is the guest house from Echo Beach and cafes?</span>
+              <span class="material-symbols-outlined faq-icon transition-transform duration-300 text-tertiary">expand_more</span>
+            </button>
+            <div class="faq-content hidden px-6 pb-6 text-on-surface-variant font-body-md text-sm leading-relaxed border-t border-surface-variant/20 pt-4">
+              Jineng Guest House D47 is conveniently tucked away in a quiet lane in Canggu, just a 5-minute walk or short ride from Echo Beach, Pererenan, and Canggu's iconic dining spots and surf breaks.
+            </div>
+          </div>
+
+          <!-- FAQ Item 4 -->
+          <div class="faq-item bg-surface rounded-2xl border border-surface-variant/50 overflow-hidden transition-all duration-300">
+            <button class="faq-btn w-full p-6 text-left flex justify-between items-center font-headline-md text-lg text-primary hover:text-secondary transition-colors focus:outline-none">
+              <span>Is parking available on site?</span>
+              <span class="material-symbols-outlined faq-icon transition-transform duration-300 text-tertiary">expand_more</span>
+            </button>
+            <div class="faq-content hidden px-6 pb-6 text-on-surface-variant font-body-md text-sm leading-relaxed border-t border-surface-variant/20 pt-4">
+              Yes, we provide safe, complimentary parking space for motorbikes and cars right at the entrance of Jineng Guest House D47.
+            </div>
+          </div>
+
+          <!-- FAQ Item 5 -->
+          <div class="faq-item bg-surface rounded-2xl border border-surface-variant/50 overflow-hidden transition-all duration-300">
+            <button class="faq-btn w-full p-6 text-left flex justify-between items-center font-headline-md text-lg text-primary hover:text-secondary transition-colors focus:outline-none">
+              <span>How do I complete and confirm my booking?</span>
+              <span class="material-symbols-outlined faq-icon transition-transform duration-300 text-tertiary">expand_more</span>
+            </button>
+            <div class="faq-content hidden px-6 pb-6 text-on-surface-variant font-body-md text-sm leading-relaxed border-t border-surface-variant/20 pt-4">
+              Simply select your Check-in and Check-out dates using the booking bar, click "Check Availability", fill in your details on the Secure Checkout page, and choose Credit Card, Bank Transfer, or QRIS E-Wallet. You can also confirm instantly with our WhatsApp admin at +62 851-1104-4817.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Location Section -->
     <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-section-gap" id="location">
       <div class="bg-surface-container rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-[0_8px_30px_rgba(95,110,94,0.08)]">
@@ -255,7 +453,7 @@
           </a>
         </div>
         <div class="md:w-1/2 h-64 md:h-auto relative bg-surface-dim overflow-hidden">
-          <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Jineng Guest House D47 Exterior Signboard" src="./assets/WhatsApp Image 2026-07-30 at 09.15.21.jpeg"/>
+          <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 gallery-trigger cursor-pointer" alt="Jineng Guest House D47 Exterior Signboard" src="./assets/WhatsApp Image 2026-07-30 at 09.15.21.jpeg"/>
         </div>
       </div>
     </section>

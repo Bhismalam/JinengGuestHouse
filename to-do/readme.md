@@ -19,8 +19,7 @@ Dokumen ini digunakan untuk melacak daftar tugas (tasks) yang harus dibuat, dipe
 - [x] Menyesuaikan konten teks (deskripsi mezzanine loft & bata merah, harga $35/malam, alamat Jineng Guest House D47, nomor WA +62 851-1104-4817)
 - [x] Build produksi berhasil (`npm run build`)
 
-## Belum Dikerjakan 📋
-- [ ] Menambahkan halaman/section tambahan jika diperlukan (Testimonial, FAQ, dll)
+- [x] Menambahkan halaman/section tambahan (Gallery Filter & Lightbox, Guest Reviews 5-Star, FAQ Accordion interaktif)
 - [x] Optimasi SEO (meta description, Open Graph tags, favicon SVG)
 - [ ] Deploy ke hosting (Vercel / Netlify / cPanel)
 

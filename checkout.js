@@ -1,0 +1,284 @@
+// Parse query params for booking details
+function parseQueryParams() {
+  const params = new URLSearchParams(window.location.search);
+  const checkin = params.get('checkin');
+  const checkout = params.get('checkout');
+  const qty = params.get('quantity') || '1';
+
+  // Calculate nights
+  let numNights = 3; // Default fallback
+  let checkinDate = new Date();
+  let checkoutDate = new Date();
+  checkoutDate.setDate(checkoutDate.getDate() + 3);
+
+  if (checkin && checkout) {
+    const d1 = new Date(checkin);
+    const d2 = new Date(checkout);
+    if (!isNaN(d1.getTime()) && !isNaN(d2.getTime()) && d2 > d1) {
+      checkinDate = d1;
+      checkoutDate = d2;
+      const diffTime = Math.abs(d2 - d1);
+      numNights = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    }
+  }
+
+  // Determine rate and title based on quantity
+  let rate = 120;
+  let title = 'Garden Suite';
+  let qtyText = '1x Suite';
+
+  if (qty === '2') {
+    rate = 220; // Discounted rate for entire property
+    title = 'Entire Property (2 Rooms)';
+    qtyText = '2 Rooms';
+  }
+
+  // Update DOM with calculations
+  const summaryTitle = document.getElementById('summary-title-header');
+  const summaryQty = document.getElementById('summary-qty-header');
+  const nightsLabel = document.getElementById('price-nights-label');
+  const nightsValue = document.getElementById('price-nights-value');
+  const taxValue = document.getElementById('price-tax-value');
+  const totalValue = document.getElementById('price-total-value');
+
+  if (summaryTitle) summaryTitle.textContent = title;
+  if (summaryQty) summaryQty.textContent = qtyText;
+
+  const subtotal = rate * numNights;
+  const tax = Math.round(subtotal * 0.1);
+  const total = subtotal + tax;
+
+  if (nightsLabel) nightsLabel.textContent = `$${rate} x ${numNights} night${numNights > 1 ? 's' : ''}`;
+  if (nightsValue) nightsValue.textContent = `$${subtotal.toFixed(2)}`;
+  if (taxValue) taxValue.textContent = `$${tax.toFixed(2)}`;
+  if (totalValue) totalValue.textContent = `$${total.toFixed(2)}`;
+
+  return {
+    title,
+    qtyText,
+    checkin: checkinDate.toISOString().split('T')[0],
+    checkout: checkoutDate.toISOString().split('T')[0],
+    nights: numNights,
+    rate,
+    total
+  };
+}
+
+const bookingData = parseQueryParams();
+
+// Toggle payment form visibility dynamically
+const paymentMethods = document.querySelectorAll('input[name="paymentMethod"]');
+const cardForm = document.getElementById('payment-card-form');
+const transferForm = document.getElementById('payment-transfer-form');
+const ewalletForm = document.getElementById('payment-ewallet-form');
+
+paymentMethods.forEach(method => {
+  method.addEventListener('change', (e) => {
+    const selected = e.target.value;
+    
+    // Hide all forms first
+    cardForm.classList.add('hidden');
+    transferForm.classList.add('hidden');
+    ewalletForm.classList.add('hidden');
+
+    // Remove required attributes from card inputs when not selected
+    setCardInputsRequired(selected === 'card');
+
+    // Show selected form
+    if (selected === 'card') {
+      cardForm.classList.remove('hidden');
+    } else if (selected === 'transfer') {
+      transferForm.classList.remove('hidden');
+    } else if (selected === 'ewallet') {
+      ewalletForm.classList.remove('hidden');
+    }
+  });
+});
+
+function setCardInputsRequired(isRequired) {
+  const cardNum = document.getElementById('cardNumber');
+  const expiry = document.getElementById('expiry');
+  const cvv = document.getElementById('cvv');
+  if (cardNum && expiry && cvv) {
+    if (isRequired) {
+      cardNum.setAttribute('required', 'required');
+      expiry.setAttribute('required', 'required');
+      cvv.setAttribute('required', 'required');
+    } else {
+      cardNum.removeAttribute('required');
+      expiry.removeAttribute('required');
+      cvv.removeAttribute('required');
+    }
+  }
+}
+
+// Auto-format Credit Card Number (e.g. 0000 0000 0000 0000)
+const cardInput = document.getElementById('cardNumber');
+if (cardInput) {
+  cardInput.addEventListener('input', (e) => {
+    let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+    let formattedValue = '';
+    for (let i = 0; i < value.length; i++) {
+      if (i > 0 && i % 4 === 0) {
+        formattedValue += ' ';
+      }
+      formattedValue += value[i];
+    }
+    e.target.value = formattedValue;
+  });
+}
+
+// Auto-format Expiration Date (e.g. MM/YY)
+const expiryInput = document.getElementById('expiry');
+if (expiryInput) {
+  expiryInput.addEventListener('input', (e) => {
+    let value = e.target.value.replace(/\//g, '').replace(/[^0-9]/gi, '');
+    if (value.length > 2) {
+      e.target.value = value.substring(0, 2) + '/' + value.substring(2, 4);
+    } else {
+      e.target.value = value;
+    }
+  });
+}
+
+// Limit CVV to numeric inputs only
+const cvvInput = document.getElementById('cvv');
+if (cvvInput) {
+  cvvInput.addEventListener('input', (e) => {
+    e.target.value = e.target.value.replace(/[^0-9]/gi, '');
+  });
+}
+
+// Form Submit Handling
+const btnSubmit = document.getElementById('btn-submit');
+const guestFormInputs = ['firstName', 'lastName', 'email', 'phone'];
+
+if (btnSubmit) {
+  btnSubmit.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    // Check Guest form validity manually
+    let isValid = true;
+    for (const id of guestFormInputs) {
+      const input = document.getElementById(id);
+      if (input && !input.value.trim()) {
+        input.reportValidity();
+        isValid = false;
+        return;
+      }
+    }
+
+    // Get selected payment method
+    const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+
+    // Validate payment card info if applicable
+    if (paymentMethod === 'card') {
+      const cardNum = document.getElementById('cardNumber').value.trim();
+      const expiry = document.getElementById('expiry').value.trim();
+      const cvv = document.getElementById('cvv').value.trim();
+
+      if (cardNum.length < 19) {
+        alert('Please enter a valid card number.');
+        document.getElementById('cardNumber').focus();
+        return;
+      }
+      if (expiry.length < 5) {
+        alert('Please enter a valid expiration date (MM/YY).');
+        document.getElementById('expiry').focus();
+        return;
+      }
+      if (cvv.length < 3) {
+        alert('Please enter a valid CVV.');
+        document.getElementById('cvv').focus();
+        return;
+      }
+    }
+
+    // Capture guest details
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+
+    // Create a beautiful Success Overlay Modal
+    showSuccessModal(firstName, lastName, paymentMethod);
+  });
+}
+
+function showSuccessModal(firstName, lastName, paymentMethod) {
+  const modalOverlay = document.createElement('div');
+  modalOverlay.className = 'fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4';
+  
+  // Format payment method text for user display
+  let paymentText = 'Credit Card';
+  let instructionHtml = `<p class="text-sm text-on-surface-variant mb-6">Your transaction has been processed securely via Credit Card. A confirmation email has been sent to you.</p>`;
+  
+  if (paymentMethod === 'transfer') {
+    paymentText = 'Bank Transfer';
+    instructionHtml = `
+      <div class="bg-surface-container-low p-4 rounded-xl text-left border border-outline-variant/30 space-y-2 mb-6">
+        <p class="text-xs font-semibold text-primary uppercase tracking-wider">Instructions:</p>
+        <p class="text-sm text-on-surface-variant">Please transfer the total of <strong>$${bookingData.total.toFixed(2)}</strong> to either BCA or Mandiri. Send proof of payment to our WhatsApp admin to activate your booking.</p>
+      </div>
+    `;
+  } else if (paymentMethod === 'ewallet') {
+    paymentText = 'E-Wallet';
+    instructionHtml = `
+      <div class="bg-surface-container-low p-4 rounded-xl text-left border border-outline-variant/30 space-y-2 mb-6">
+        <p class="text-xs font-semibold text-primary uppercase tracking-wider">Instructions:</p>
+        <p class="text-sm text-on-surface-variant">Verify the payment on your e-wallet app. Screenshot the receipt and send it to our WhatsApp admin to verify your booking.</p>
+      </div>
+    `;
+  }
+
+  modalOverlay.innerHTML = `
+    <div class="bg-surface border border-outline-variant rounded-2xl p-8 max-w-md w-full text-center shadow-2xl animate-fade-in relative">
+      <div class="w-16 h-16 bg-primary-fixed rounded-full flex items-center justify-center mx-auto mb-6">
+        <span class="material-symbols-outlined text-4xl text-primary font-bold">check_circle</span>
+      </div>
+      <h2 class="font-headline-md text-3xl text-primary mb-2">Booking Confirmed!</h2>
+      <p class="text-on-surface font-medium mb-4">Thank you, ${firstName} ${lastName}!</p>
+      
+      <div class="border-t border-b border-surface-variant/40 py-4 mb-6 text-left space-y-2 text-sm text-on-surface-variant">
+        <div class="flex justify-between"><span>Sanctuary:</span><span class="font-semibold text-on-background">${bookingData.title}</span></div>
+        <div class="flex justify-between"><span>Check-in:</span><span class="font-semibold text-on-background">${bookingData.checkin}</span></div>
+        <div class="flex justify-between"><span>Check-out:</span><span class="font-semibold text-on-background">${bookingData.checkout}</span></div>
+        <div class="flex justify-between"><span>Nights:</span><span class="font-semibold text-on-background">${bookingData.nights} Night(s)</span></div>
+        <div class="flex justify-between"><span>Payment Method:</span><span class="font-semibold text-on-background">${paymentText}</span></div>
+        <div class="flex justify-between border-t border-surface-variant/40 pt-2 font-medium text-on-background"><span>Total paid:</span><span class="text-primary font-bold text-lg">$${bookingData.total.toFixed(2)}</span></div>
+      </div>
+      
+      ${instructionHtml}
+
+      <div class="flex flex-col gap-2">
+        <button id="btn-whatsapp-confirm" class="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white py-3.5 rounded-xl font-label-caps text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 shadow-md">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.436 2.5 1.173 3.466l-.768 2.808 2.877-.754a5.728 5.728 0 002.486.58h.003c3.181 0 5.768-2.586 5.769-5.766.001-3.18-2.585-5.766-5.769-5.766zm3.426 8.21c-.147.412-.852.793-1.185.83-.332.037-.732.062-2.199-.548-1.879-.78-3.08-2.693-3.173-2.817-.094-.124-.766-.998-.766-1.917 0-.92.476-1.371.645-1.558.17-.187.373-.234.497-.234.124 0 .249.001.356.006.113.005.263-.044.412.318.156.381.533 1.302.579 1.396.046.093.078.203.015.328-.062.125-.094.203-.187.312-.094.109-.196.244-.28.328-.094.094-.191.196-.081.385.111.189.493.815 1.059 1.319.73.65 1.343.852 1.532.946.189.094.298.078.41-.047.112-.125.476-.554.603-.742.127-.188.254-.156.425-.094.172.062 1.09.515 1.278.609.188.094.312.141.359.223.047.081.047.472-.1.884zM12 2C6.477 2 2 6.477 2 12c0 2.012.597 3.886 1.623 5.46L2 22l4.702-1.233A9.923 9.923 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.745 0-3.37-.5-4.75-1.37l-.34-.21-2.82.74.75-2.73-.23-.37A7.933 7.933 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/></svg>
+          Confirm via WhatsApp
+        </button>
+        <button id="btn-close-modal" class="w-full bg-surface border border-outline-variant hover:bg-surface-container-low text-on-surface py-3 rounded-xl font-label-caps text-xs uppercase tracking-widest transition-all">
+          Back to Home
+        </button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modalOverlay);
+
+  // WhatsApp Confirm Link Clicked
+  const waBtn = modalOverlay.querySelector('#btn-whatsapp-confirm');
+  waBtn.addEventListener('click', () => {
+    const phoneNum = document.getElementById('phone').value.trim();
+    const whatsappNumber = '6281234567890'; // Replace with actual WhatsApp number
+    const message = `Hello Jineng GuestHouse!\n\nI have confirmed my booking inquiry.\n\n🏨 Room: ${bookingData.title}\n📅 Check-In: ${bookingData.checkin}\n📅 Check-Out: ${bookingData.checkout}\n⏳ Nights: ${bookingData.nights} Night(s)\n💳 Payment Method: ${paymentText}\n💰 Total Amount: $${bookingData.total.toFixed(2)}\n\nGuest Info:\n👤 Name: ${firstName} ${lastName}\n📧 Email: ${email}\n📞 Phone: ${phoneNum}\n\nPlease confirm my reservation. Thank you!`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+  });
+
+  // Close modal and redirect home
+  const closeBtn = modalOverlay.querySelector('#btn-close-modal');
+  closeBtn.addEventListener('click', () => {
+    modalOverlay.remove();
+    window.location.href = './index.html';
+  });
+}

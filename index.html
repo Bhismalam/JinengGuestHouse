@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>JINENG GUESTHOUSE - Your Tropical Escape</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="bg-surface text-on-surface font-body-md text-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
+
+  <!-- TopNavBar -->
+  <header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md dark:bg-inverse-surface/80 shadow-sm shadow-primary/5 transition-all duration-300 py-6" id="main-nav">
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+      <a class="font-headline-md text-headline-md text-primary dark:text-primary-fixed tracking-tight hover:opacity-80 transition-opacity" href="#">
+        JINENG GUESTHOUSE
+      </a>
+      <nav class="hidden md:flex gap-8 items-center">
+        <a class="text-primary font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors duration-300 scale-95" href="#sanctuary">Sanctuary</a>
+        <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-300" href="#suite">The Suite</a>
+        <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-300" href="#amenities">Essentials</a>
+        <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-300" href="#location">Location</a>
+      </nav>
+      <a class="bg-primary text-on-primary px-6 py-3 rounded-full font-body-md text-body-md hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 shadow-md flex items-center gap-2" href="#booking">
+        Book Now
+      </a>
+    </div>
+  </header>
+
+  <main class="pt-[100px]" id="sanctuary">
+    <!-- Hero Section -->
+    <section class="relative w-full h-[819px] min-h-[600px] flex items-center justify-center overflow-hidden mb-section-gap px-4 md:px-margin-desktop">
+      <div class="absolute inset-0 z-0 rounded-2xl mx-margin-mobile md:mx-margin-desktop overflow-hidden mt-6">
+        <div class="bg-cover bg-center bg-no-repeat w-full h-full object-cover animate-fade-in" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD9XStzgm_WK3EPeJf0Vmwz9rokclrwIRYPz4zhxQvCBGwZTB0asnFKPIPCv5h9uetZYPGYdMo7zqJw3Y9KkAeTd-kTafsEdM0ZMUEBVfKKLYcDXaKJdM6-rV3xouCcZsZF9jWXXxoQtk84sRXbUocR_1jkKR4etYjToEZQbghdG1q4nAreoxH2uZwVNSlRCqpeHVRk_s2a9tqMYwsMez_haPMBEqEJbf6MZXw7zDcAwLuWyQRsO9bO')"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-surface/80 via-surface/30 to-transparent"></div>
+      </div>
+      
+      <div class="relative z-10 text-center max-w-3xl mx-auto px-6 py-12 rounded-2xl backdrop-blur-sm bg-surface/40 shadow-sm border border-surface/20">
+        <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-6 drop-shadow-md">
+          Your Tropical Escape in Canggu
+        </h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto drop-shadow-sm">
+          Experience the perfect blend of tranquility and Canggu vibe. A sanctuary designed for the discerning traveler.
+        </p>
+      </div>
+
+      <!-- Floating Quick Search / Booking Form -->
+      <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[90%] max-w-4xl z-20" id="booking">
+        <form id="booking-form" class="bg-surface-container-highest backdrop-blur-xl rounded-2xl p-4 md:p-6 shadow-[0_8px_30px_rgba(95,110,94,0.12)] border border-surface-variant/50 flex flex-col md:flex-row items-center gap-4 justify-between">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full flex-grow">
+            <div class="bg-surface px-4 py-3 rounded-xl border-none shadow-sm flex flex-col focus-within:ring-2 focus-within:ring-primary/50 transition-all">
+              <label for="check-in" class="font-label-caps text-label-caps text-tertiary mb-1">CHECK-IN</label>
+              <input id="check-in" class="bg-transparent border-none p-0 text-on-surface font-body-md focus:ring-0 cursor-pointer" type="date" required/>
+            </div>
+            <div class="bg-surface px-4 py-3 rounded-xl border-none shadow-sm flex flex-col focus-within:ring-2 focus-within:ring-primary/50 transition-all">
+              <label for="check-out" class="font-label-caps text-label-caps text-tertiary mb-1">CHECK-OUT</label>
+              <input id="check-out" class="bg-transparent border-none p-0 text-on-surface font-body-md focus:ring-0 cursor-pointer" type="date" required/>
+            </div>
+            <div class="bg-surface px-4 py-3 rounded-xl border-none shadow-sm flex flex-col focus-within:ring-2 focus-within:ring-primary/50 transition-all">
+              <label for="quantity" class="font-label-caps text-label-caps text-tertiary mb-1">QUANTITY</label>
+              <select id="quantity" class="bg-transparent border-none p-0 text-on-surface font-body-md focus:ring-0 appearance-none cursor-pointer">
+                <option value="1">1 Room</option>
+                <option value="2">Entire Property / 2 Rooms</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="w-full md:w-auto bg-primary text-on-primary px-8 py-4 rounded-xl font-body-md text-body-md whitespace-nowrap hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 shadow-md">
+            Check Availability
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- The Suite Section -->
+    <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-section-gap pt-16" id="suite">
+      <div class="mb-12 text-center md:text-left">
+        <h2 class="font-headline-md text-headline-md text-primary mb-4">The Suite</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+          A grounding retreat connected directly to our lush central gardens. Featuring double-height ceilings, minimalist teak wood furniture, and polished concrete floors softened by textured natural rugs. Experience ultimate privacy with panoramic canopy views and immediate access to the saltwater pool.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mb-12">
+        <div class="rounded-2xl overflow-hidden h-[450px]">
+          <img alt="The Suite - Garden View" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAQeesULsQ1kZuw0xMsuZyrHy8cq38Kf-b8qNo7dU4LhC13kUf5e8D5eObL148wiDauM-x_PByOadFQXrbiJDmLAuwoynmf8wykc8OMm9FCLWkMcr5xKeIju47p3Kp5neNBOMRGFbqGV3IPkXB8ssBDx8MsrEM6UGNFnyWx1M1udgPyh2t5tKpOqf9Mm0KxROxjVLqew7tpZTb-1w0YoN5jvyNhh4BmcvADKcNw8JKQBdW4CfRq2qW"/>
+        </div>
+        <div class="grid grid-rows-2 gap-gutter h-[450px]">
+          <div class="rounded-2xl overflow-hidden">
+            <img alt="The Suite - Interior" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArl5367rK0EXdH1Y0tb3AbsgMcA3Uh99T7BZEkg1UEXELrF80ghnSKjllsI7JSiUmFAPIEVBBR7eF242gbjs2GaCUJraxGCN9rgKbj1Ghs5Two_HA_eI9cRvB1SqQaCyW6x9hg7md29n3_itELQKwIRu6btab0l0yq14gtVp1A67rMwvTnLeZYf968BSzGotpJrscpmvzPYUSoU8wCA_4aBKOV14Jjs_8ZwHDjAFvQSFcxK22Lys1M"/>
+          </div>
+          <div class="rounded-2xl overflow-hidden">
+            <img alt="The Suite - Bathroom" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-qx63XyybtcpOPnosIWUdNDitqIFOpnha6KFbWxNY3KIndb0ZS5dub6Ebkw4Sz_vCbiS2culs3SnxrmXTCE9LCH6dcwpcNLV8LY70DmPXq2lOIlfU4q6tvDYnSE2bSvUcEnq5ts13wBnRZGImllWPvhJAJEb_mTWmBNxYfxwmYMFCxaEQTsEIEAkt7jDwJLdy3a112txp902uKGb_LFxHWr2IzeHkg7FeZ4Pwbo5uecaKm-Y7Vfbd"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-surface-container rounded-2xl p-8 md:p-12">
+        <h3 class="font-headline-md text-headline-md text-primary mb-8">Suite Features</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+          <ul class="space-y-6">
+            <li class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-tertiary">king_bed</span>
+              <span class="font-body-md text-on-surface">King-size luxury bed with high-end linens</span>
+            </li>
+            <li class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-tertiary">bathroom</span>
+              <span class="font-body-md text-on-surface">Freestanding soaking tub</span>
+            </li>
+            <li class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-tertiary">pool</span>
+              <span class="font-body-md text-on-surface">Immediate pool access</span>
+            </li>
+          </ul>
+          <ul class="space-y-6">
+            <li class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-tertiary">nature</span>
+              <span class="font-body-md text-on-surface">Private garden views</span>
+            </li>
+            <li class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-tertiary">coffee_maker</span>
+              <span class="font-body-md text-on-surface">Premium espresso machine</span>
+            </li>
+            <li class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-tertiary">balcony</span>
+              <span class="font-body-md text-on-surface">Panoramic canopy vistas</span>
+            </li>
+          </ul>
+          <div class="flex flex-col justify-center bg-surface p-8 rounded-xl border border-surface-variant/50 text-center h-full">
+            <span class="font-body-md text-tertiary mb-2">Nightly Rate</span>
+            <span class="font-headline-md text-primary text-4xl mb-6">From $120</span>
+            <a class="w-full bg-primary text-on-primary px-6 py-4 rounded-xl font-body-md hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-md inline-block" href="#booking">
+              Reserve Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Amenities / Essentials Section -->
+    <section class="bg-surface-container-low py-20 mb-section-gap" id="amenities">
+      <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
+        <h2 class="font-headline-md text-headline-md text-primary mb-12">Elevated Essentials</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+          <div class="flex flex-col items-center group">
+            <div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center mb-4 group-hover:bg-primary-container transition-colors duration-300">
+              <span class="material-symbols-outlined text-3xl text-primary group-hover:text-on-primary-container transition-colors" data-icon="wifi">wifi</span>
+            </div>
+            <h4 class="font-body-lg text-body-lg text-on-surface font-medium mb-1">High-speed Wi-Fi</h4>
+            <p class="font-body-md text-body-md text-tertiary text-sm">Seamless connectivity</p>
+          </div>
+          <div class="flex flex-col items-center group">
+            <div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center mb-4 group-hover:bg-primary-container transition-colors duration-300">
+              <span class="material-symbols-outlined text-3xl text-primary group-hover:text-on-primary-container transition-colors" data-icon="ac_unit">ac_unit</span>
+            </div>
+            <h4 class="font-body-lg text-body-lg text-on-surface font-medium mb-1">Air Conditioning</h4>
+            <p class="font-body-md text-body-md text-tertiary text-sm">Climate controlled</p>
+          </div>
+          <div class="flex flex-col items-center group">
+            <div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center mb-4 group-hover:bg-primary-container transition-colors duration-300">
+              <span class="material-symbols-outlined text-3xl text-primary group-hover:text-on-primary-container transition-colors" data-icon="pool">pool</span>
+            </div>
+            <h4 class="font-body-lg text-body-lg text-on-surface font-medium mb-1">Saltwater Pool</h4>
+            <p class="font-body-md text-body-md text-tertiary text-sm">Gentle on skin</p>
+          </div>
+          <div class="flex flex-col items-center group">
+            <div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center mb-4 group-hover:bg-primary-container transition-colors duration-300">
+              <span class="material-symbols-outlined text-3xl text-primary group-hover:text-on-primary-container transition-colors" data-icon="self_improvement">self_improvement</span>
+            </div>
+            <h4 class="font-body-lg text-body-lg text-on-surface font-medium mb-1">Daily Yoga</h4>
+            <p class="font-body-md text-body-md text-tertiary text-sm">Morning practice</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-section-gap" id="location">
+      <div class="bg-surface-container rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-[0_8px_30px_rgba(95,110,94,0.08)]">
+        <div class="md:w-1/2 p-8 md:p-16 flex flex-col justify-center">
+          <h2 class="font-headline-md text-headline-md text-primary mb-4">The Heart of Canggu</h2>
+          <p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md">
+            Tucked away in a quiet residential lane, yet intimately connected to the vibrant pulse of Bali's south coast. We are a mere 5 minutes stroll from the iconic Echo Beach.
+          </p>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-tertiary" data-icon="directions_walk">directions_walk</span>
+              <span class="font-body-md text-body-md text-on-surface">5 mins to Echo Beach</span>
+            </li>
+            <li class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-tertiary" data-icon="restaurant">restaurant</span>
+              <span class="font-body-md text-body-md text-on-surface">Steps from premium dining</span>
+            </li>
+            <li class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-tertiary" data-icon="flight">flight</span>
+              <span class="font-body-md text-body-md text-on-surface">45 mins from Ngurah Rai Airport</span>
+            </li>
+          </ul>
+          <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="self-start px-6 py-3 border border-primary text-primary rounded-xl hover:bg-primary/5 transition-colors font-body-md text-body-md flex items-center gap-2">
+            <span class="material-symbols-outlined" data-icon="map">map</span>
+            View on Map
+          </a>
+        </div>
+        <div class="md:w-1/2 h-64 md:h-auto relative bg-surface-dim">
+          <img class="w-full h-full object-cover opacity-80" alt="Canggu Bali Map" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8n6Rb75AXTYUsQb-CwRlete1KNi8o-8nvEnYrcueAHS5138uSlnvmJyE4VhSIixqSOmsbt80HRUqCb99zTFrtktfim0_Lepu5ipMgDtOAcnQs4HmPs3lbc7NnKGcHNP3R88cuCfwsExJICx6_BLiv_pYxFx49XfW0VeQ0nx86YsRCzXI4eqeqlGkTiqssNuuDxVtIm4nKFpqM2am5Z_QZBuyb7-2siaDk4sEWd0uIYdsVVq1QbbxU"/>
+          <div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-surface-container dark:bg-surface-container-highest w-full mt-section-gap border-t border-surface-container-low dark:border-surface-dim">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-20 max-w-container-max mx-auto">
+      <div class="md:col-span-1 flex flex-col mb-8 md:mb-0">
+        <span class="font-headline-md text-headline-md text-primary dark:text-primary-fixed mb-4">JINENG GUESTHOUSE</span>
+        <p class="font-body-md text-body-md text-tertiary dark:text-tertiary-fixed mb-6 max-w-xs">A sanctuary designed for the discerning traveler, blending tropical ease with modern minimalism.</p>
+        <div class="flex gap-4 mt-auto">
+          <a class="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors" href="#" aria-label="Share">
+            <span class="material-symbols-outlined text-[20px]" data-icon="share">share</span>
+          </a>
+        </div>
+      </div>
+      <div class="flex flex-col gap-4">
+        <h4 class="font-label-caps text-label-caps text-tertiary mb-2">EXPLORE</h4>
+        <a class="text-on-tertiary-fixed-variant font-body-md text-body-md hover:text-secondary transition-colors" href="#sanctuary">Sanctuary</a>
+        <a class="text-on-tertiary-fixed-variant font-body-md text-body-md hover:text-secondary transition-colors" href="#suite">The Suite</a>
+        <a class="text-on-tertiary-fixed-variant font-body-md text-body-md hover:text-secondary transition-colors" href="#amenities">Essentials</a>
+        <a class="text-on-tertiary-fixed-variant font-body-md text-body-md hover:text-secondary transition-colors" href="#location">Location</a>
+      </div>
+      <div class="flex flex-col gap-4">
+        <h4 class="font-label-caps text-label-caps text-tertiary mb-2">LEGAL</h4>
+        <a class="text-on-tertiary-fixed-variant font-body-md text-body-md hover:text-secondary transition-colors" href="#">Privacy Policy</a>
+        <a class="text-on-tertiary-fixed-variant font-body-md text-body-md hover:text-secondary transition-colors" href="#">Terms of Service</a>
+        <a class="text-on-tertiary-fixed-variant font-body-md text-body-md hover:text-secondary transition-colors" href="#">Sustainability</a>
+        <a class="text-on-tertiary-fixed-variant font-body-md text-body-md hover:text-secondary transition-colors" href="#">Careers</a>
+      </div>
+      <div class="flex flex-col gap-4">
+        <h4 class="font-label-caps text-label-caps text-tertiary mb-2">CONTACT</h4>
+        <p class="text-on-tertiary-fixed-variant font-body-md text-body-md">hello@jinengguesthouse.com</p>
+        <p class="text-on-tertiary-fixed-variant font-body-md text-body-md">+62 812 3456 7890</p>
+        <p class="text-on-tertiary-fixed-variant font-body-md text-body-md mt-4 text-sm">
+          Jalan Pantai Batu Mejan,<br/>
+          Canggu, Bali, Indonesia
+        </p>
+      </div>
+    </div>
+    <div class="px-margin-mobile md:px-margin-desktop py-6 border-t border-surface-variant/20 max-w-container-max mx-auto flex justify-center">
+      <p class="font-body-md text-body-md text-tertiary dark:text-tertiary-fixed text-sm">
+        © 2026 Jineng GuestHouse. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

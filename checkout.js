@@ -23,12 +23,12 @@ function parseQueryParams() {
   }
 
   // Determine rate and title based on quantity
-  let rate = 120;
-  let title = 'Garden Suite';
+  let rate = 35;
+  let title = 'Jineng Suite';
   let qtyText = '1x Suite';
 
   if (qty === '2') {
-    rate = 220; // Discounted rate for entire property
+    rate = 65; // Entire Property / 2 Rooms
     title = 'Entire Property (2 Rooms)';
     qtyText = '2 Rooms';
   }
@@ -268,7 +268,7 @@ function showSuccessModal(firstName, lastName, paymentMethod) {
   const waBtn = modalOverlay.querySelector('#btn-whatsapp-confirm');
   waBtn.addEventListener('click', () => {
     const phoneNum = document.getElementById('phone').value.trim();
-    const whatsappNumber = '6281234567890'; // Replace with actual WhatsApp number
+    const whatsappNumber = '6285111044817'; // Official Jineng Guest House WhatsApp number
     const message = `Hello Jineng GuestHouse!\n\nI have confirmed my booking inquiry.\n\n🏨 Room: ${bookingData.title}\n📅 Check-In: ${bookingData.checkin}\n📅 Check-Out: ${bookingData.checkout}\n⏳ Nights: ${bookingData.nights} Night(s)\n💳 Payment Method: ${paymentText}\n💰 Total Amount: $${bookingData.total.toFixed(2)}\n\nGuest Info:\n👤 Name: ${firstName} ${lastName}\n📧 Email: ${email}\n📞 Phone: ${phoneNum}\n\nPlease confirm my reservation. Thank you!`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;

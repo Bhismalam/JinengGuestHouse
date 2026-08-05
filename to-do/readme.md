@@ -17,10 +17,8 @@ Dokumen ini digunakan untuk melacak daftar tugas (tasks) yang harus dibuat, dipe
   - [x] Tambahkan auto-format input kartu kredit & validasi input
 - [x] Mengganti foto/gambar dengan aset asli Jineng GuestHouse dari folder `assets/` (Hero, Suite Showcase, Gallery, Signboard D47, Checkout thumbnail)
 - [x] Menyesuaikan konten teks (deskripsi mezzanine loft & bata merah, harga $35/malam, alamat Jineng Guest House D47, nomor WA +62 851-1104-4817)
-- [x] Build produksi berhasil (`npm run build`)
-
-- [x] Menambahkan halaman/section tambahan (Gallery Filter & Lightbox, Guest Reviews 5-Star, FAQ Accordion interaktif)
-- [x] Optimasi SEO (meta description, Open Graph tags, favicon SVG)
+- [x] Perbaikan tampilan gambar thumbnail Order Summary di `checkout.html` (penyesuaian `tailwind.config.js` content path & inline styling pembatas ukuran 80x80px)
+- [x] Re-build produksi berhasil (`npm run build`)
 - [ ] Deploy ke hosting (Vercel / Netlify / cPanel)
 
 

@@ -49,4 +49,22 @@ Dokumen ini digunakan untuk mencatat riwayat pekerjaan, keputusan arsitektur, da
   - **Optimasi SEO**: Menambahkan meta description, Open Graph (OG) tags social preview, dan Favicon SVG 🌿.
 - **Status Build**: Berhasil di-build tanpa error dengan Vite v5. All assets bundled to `dist/assets/`.
 
+### 2026-07-31 — Perbaikan Ukuran Gambar Order Summary Checkout
+- **Akar Masalah**: Konfigurasi Tailwind `tailwind.config.js` sebelumnya hanya mendaftarkan `./index.html` dan `./main.js`, sehingga class `w-20` dan `h-20` pada `<img ...>` di `checkout.html` tidak di-generate oleh Tailwind. Hal ini menyebabkan foto kamar dalam ringkasan pesanan (*Order Summary*) melebar memenuhi layar.
+- **Solusi & Perbaikan**:
+  - Memperbarui `content` di `tailwind.config.js` menjadi `["./*.html", "./*.js"]` agar seluruh halaman HTML & script JS di-scan dan di-compile sempurna oleh Tailwind CSS.
+  - Menambahkan pembatasan ukuran eksplisit (`style="width: 80px; height: 80px; min-width: 80px; max-width: 80px; min-height: 80px; max-height: 80px;"`) serta class `shrink-0` pada elemen gambar thumbnail di [checkout.html](file:///c:/Users/bhisma/OneDrive/Desktop/CODINGERS/project%20villa%20fix/Jineng%20GuestHouse/checkout.html).
+- **Status Build**: `npm run build` berhasil dijalankan ulang, stylesheet produksi diperbarui (29.48 kB) dengan tampilan gambar yang kini rapi dan proporsional.
+
+### 2026-07-31 — Redesain Estetika Modal Konfirmasi Booking ("Booking Confirmed!")
+- **Akar Masalah**:
+  1. Ikon SVG WhatsApp pada tombol konfirmasi di [checkout.js](file:///c:/Users/bhisma/OneDrive/Desktop/CODINGERS/project%20villa%20fix/Jineng%20GuestHouse/checkout.js) tidak memiliki batasan dimensi eksplisit sehingga melebar raksasa memenuhi layar dan menutupi teks tombol.
+  2. Modal overlay tidak memiliki pembatas tinggi maksimal (`max-h-[90vh] overflow-y-auto`), sehingga tampilan terpotong secara vertikal pada layar laptop/desktop.
+- **Solusi & Perbaikan**:
+  - Menambahkan styling inline tegas pada SVG WhatsApp (`width: 20px; height: 20px; flex-shrink: 0`) agar ukurannya presisi dan selalu proporsional.
+  - Memperbarui layout modal dengan desain tropis modern: sudut membulat halus (`rounded-3xl`), padding responsif (`p-6 sm:p-8`), scrollbar bawaan jika konten tinggi (`max-h-[90vh] overflow-y-auto`), dan badge sukses `check_circle` beraksen Sage Green.
+  - Menata ulang kotak detail pesanan (*Sanctuary, Check-in, Check-out, Duration, Payment Method, Total Amount*) serta kotak instruksi pembayaran agar tampak mewah dan rapi.
+- **Status Build**: `npm run build` berhasil di-generate (Vite v5).
+
+
 

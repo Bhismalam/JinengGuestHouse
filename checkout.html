@@ -1,249 +1,519 @@
-<!DOCTYPE html>
+<!doctype html>
 <html class="light" lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>Secure Checkout - Jineng Guest House D47, Canggu</title>
-  <meta name="description" content="Complete your reservation at Jineng Guest House D47 in Canggu, Bali securely." />
-  <meta property="og:title" content="Secure Checkout - Jineng Guest House D47" />
-  <meta property="og:description" content="Reserve your authentic Balinese Jineng wooden mezzanine suite in Canggu." />
-  <meta property="og:type" content="website" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>"/>
-  
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect"/>
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-  
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="./style.css">
-</head>
-<body class="bg-background text-on-background antialiased min-h-screen flex flex-col font-body-md text-body-md selection:bg-primary-container selection:text-on-primary-container">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Secure Checkout - Jineng Guest House D47, Canggu</title>
+    <meta
+      name="description"
+      content="Complete your reservation at Jineng Guest House D47 in Canggu, Bali securely."
+    />
+    <meta
+      property="og:title"
+      content="Secure Checkout - Jineng Guest House D47"
+    />
+    <meta
+      property="og:description"
+      content="Reserve your authentic Balinese Jineng wooden mezzanine suite in Canggu."
+    />
+    <meta property="og:type" content="website" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>"
+    />
 
-  <!-- Header / TopAppBar -->
-  <header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-sm shadow-primary/5 transition-all duration-300 border-b border-surface-variant">
-    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
-      <a class="font-headline-md text-2xl text-primary tracking-tight" href="./index.html">JINENG GUESTHOUSE</a>
-      <div class="hidden md:block">
-        <span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Secure Checkout</span>
-      </div>
-    </div>
-  </header>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Main Checkout Content -->
-  <main class="flex-grow pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-[1120px] mx-auto w-full">
-    <div class="mb-10">
-      <h1 class="font-headline-md text-4xl md:text-5xl text-on-background mb-2">Confirm and pay</h1>
-    </div>
-    
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter lg:gap-20">
-      <!-- Left Column: Guest Form & Payment -->
-      <div class="lg:col-span-7 space-y-10">
-        <!-- Guest Details Section -->
-        <section>
-          <h2 class="font-headline-md text-2xl text-on-background mb-6">Guest details</h2>
-          <form id="checkout-form" class="space-y-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <input class="w-full bg-transparent border border-outline-variant rounded-lg px-4 py-3 text-on-background focus:ring-1 focus:ring-primary focus:border-primary transition-all placeholder:text-on-surface-variant/50" id="firstName" placeholder="First name" type="text" required/>
-              </div>
-              <div>
-                <input class="w-full bg-transparent border border-outline-variant rounded-lg px-4 py-3 text-on-background focus:ring-1 focus:ring-primary focus:border-primary transition-all placeholder:text-on-surface-variant/50" id="lastName" placeholder="Last name" type="text" required/>
-              </div>
-            </div>
-            <div>
-              <input class="w-full bg-transparent border border-outline-variant rounded-lg px-4 py-3 text-on-background focus:ring-1 focus:ring-primary focus:border-primary transition-all placeholder:text-on-surface-variant/50" id="email" placeholder="Email address" type="email" required/>
-            </div>
-            <div>
-              <input class="w-full bg-transparent border border-outline-variant rounded-lg px-4 py-3 text-on-background focus:ring-1 focus:ring-primary focus:border-primary transition-all placeholder:text-on-surface-variant/50" id="phone" placeholder="Phone number (e.g. +62...)" type="tel" required/>
-            </div>
-          </form>
-        </section>
-        
-        <hr class="border-surface-variant"/>
-        
-        <!-- Payment Section -->
-        <section>
-          <h2 class="font-headline-md text-2xl text-on-background mb-6">Pay with</h2>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
-            <!-- Credit Card Option -->
-            <label class="relative cursor-pointer">
-              <input checked="" class="peer sr-only" name="paymentMethod" type="radio" value="card"/>
-              <div class="p-4 rounded-xl border border-outline-variant bg-surface hover:bg-surface-container-low peer-checked:border-primary peer-checked:bg-surface-container-low peer-checked:ring-1 peer-checked:ring-primary transition-all h-full flex flex-col items-center justify-center text-center gap-2">
-                <span class="material-symbols-outlined text-2xl text-on-surface-variant peer-checked:text-primary">credit_card</span>
-                <span class="font-body-md text-sm text-on-background font-medium">Credit Card</span>
-              </div>
-            </label>
-            <!-- Bank Transfer Option -->
-            <label class="relative cursor-pointer">
-              <input class="peer sr-only" name="paymentMethod" type="radio" value="transfer"/>
-              <div class="p-4 rounded-xl border border-outline-variant bg-surface hover:bg-surface-container-low peer-checked:border-primary peer-checked:bg-surface-container-low peer-checked:ring-1 peer-checked:ring-primary transition-all h-full flex flex-col items-center justify-center text-center gap-2">
-                <span class="material-symbols-outlined text-2xl text-on-surface-variant peer-checked:text-primary">account_balance</span>
-                <span class="font-body-md text-sm text-on-background font-medium">Bank Transfer</span>
-              </div>
-            </label>
-            <!-- E-Wallet Option -->
-            <label class="relative cursor-pointer">
-              <input class="peer sr-only" name="paymentMethod" type="radio" value="ewallet"/>
-              <div class="p-4 rounded-xl border border-outline-variant bg-surface hover:bg-surface-container-low peer-checked:border-primary peer-checked:bg-surface-container-low peer-checked:ring-1 peer-checked:ring-primary transition-all h-full flex flex-col items-center justify-center text-center gap-2">
-                <span class="material-symbols-outlined text-2xl text-on-surface-variant peer-checked:text-primary">wallet</span>
-                <span class="font-body-md text-sm text-on-background font-medium">E-Wallet</span>
-              </div>
-            </label>
-          </div>
-          
-          <!-- Card Details Form (Dynamic) -->
-          <div id="payment-card-form" class="space-y-4 transition-all duration-300">
-            <div>
-              <div class="relative">
-                <input class="w-full bg-transparent border border-outline-variant rounded-lg px-4 py-3 pl-12 text-on-background focus:ring-1 focus:ring-primary focus:border-primary transition-all placeholder:text-on-surface-variant/50" id="cardNumber" placeholder="Card number" type="text" maxlength="19"/>
-                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">credit_card</span>
-              </div>
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-              <div>
-                <input class="w-full bg-transparent border border-outline-variant rounded-lg px-4 py-3 text-on-background focus:ring-1 focus:ring-primary focus:border-primary transition-all placeholder:text-on-surface-variant/50" id="expiry" placeholder="Expiration (MM/YY)" type="text" maxlength="5"/>
-              </div>
-              <div>
-                <input class="w-full bg-transparent border border-outline-variant rounded-lg px-4 py-3 text-on-background focus:ring-1 focus:ring-primary focus:border-primary transition-all placeholder:text-on-surface-variant/50" id="cvv" placeholder="CVV" type="text" maxlength="4"/>
-              </div>
-            </div>
-          </div>
-
-          <!-- Bank Transfer Details (Dynamic - Hidden by default) -->
-          <div id="payment-transfer-form" class="hidden bg-surface-container rounded-xl p-6 border border-outline-variant space-y-4 transition-all duration-300">
-            <h3 class="font-headline-md text-lg text-on-background">Transfer Instructions</h3>
-            <p class="text-sm text-on-surface-variant">Please transfer the total amount to one of our official bank accounts below:</p>
-            <div class="space-y-3">
-              <div class="bg-surface p-4 rounded-lg flex justify-between items-center border border-outline-variant/30">
-                <div>
-                  <span class="font-bold text-xs text-tertiary block">BCA (Bank Central Asia)</span>
-                  <span class="font-headline-md text-lg text-primary tracking-wider" id="bca-account">7720 918 223</span>
-                </div>
-                <button type="button" onclick="navigator.clipboard.writeText('7720918223'); alert('BCA Account Number copied!')" class="text-primary hover:text-primary-container text-sm font-medium flex items-center gap-1">
-                  <span class="material-symbols-outlined text-[16px]">content_copy</span> Copy
-                </button>
-              </div>
-              <div class="bg-surface p-4 rounded-lg flex justify-between items-center border border-outline-variant/30">
-                <div>
-                  <span class="font-bold text-xs text-tertiary block">Mandiri Bank</span>
-                  <span class="font-headline-md text-lg text-primary tracking-wider" id="mandiri-account">145 0012 3456 78</span>
-                </div>
-                <button type="button" onclick="navigator.clipboard.writeText('1450012345678'); alert('Mandiri Account Number copied!')" class="text-primary hover:text-primary-container text-sm font-medium flex items-center gap-1">
-                  <span class="material-symbols-outlined text-[16px]">content_copy</span> Copy
-                </button>
-              </div>
-            </div>
-            <p class="text-xs text-on-surface-variant/80 italic">Note: Please send the payment proof to our administrator after completing the transfer.</p>
-          </div>
-
-          <!-- E-Wallet details (Dynamic - Hidden by default) -->
-          <div id="payment-ewallet-form" class="hidden bg-surface-container rounded-xl p-6 border border-outline-variant flex flex-col items-center text-center space-y-4 transition-all duration-300">
-            <h3 class="font-headline-md text-lg text-on-background">Scan QRIS to Pay</h3>
-            <p class="text-sm text-on-surface-variant max-w-sm">Scan the QR code below using your preferred e-wallet (GoPay, OVO, Dana, ShopeePay, or LinkAja)</p>
-            <div class="bg-white p-4 rounded-xl border border-outline-variant/50 shadow-sm">
-              <!-- Inline SVG representing a beautiful stylized QR code -->
-              <svg class="w-48 h-48" viewBox="0 0 100 100">
-                <rect x="0" y="0" width="100" height="100" fill="#ffffff"/>
-                <!-- Outer corners -->
-                <rect x="5" y="5" width="25" height="25" fill="#475647"/>
-                <rect x="9" y="9" width="17" height="17" fill="#ffffff"/>
-                <rect x="13" y="13" width="9" height="9" fill="#475647"/>
-                
-                <rect x="70" y="5" width="25" height="25" fill="#475647"/>
-                <rect x="74" y="9" width="17" height="17" fill="#ffffff"/>
-                <rect x="78" y="13" width="9" height="9" fill="#475647"/>
-                
-                <rect x="5" y="70" width="25" height="25" fill="#475647"/>
-                <rect x="9" y="74" width="17" height="17" fill="#ffffff"/>
-                <rect x="13" y="78" width="9" height="9" fill="#475647"/>
-                
-                <!-- Stylized QR blocks -->
-                <rect x="40" y="10" width="10" height="5" fill="#8e4d2e"/>
-                <rect x="55" y="5" width="5" height="15" fill="#475647"/>
-                <rect x="45" y="25" width="15" height="5" fill="#8e4d2e"/>
-                <rect x="15" y="40" width="10" height="10" fill="#475647"/>
-                <rect x="35" y="40" width="5" height="20" fill="#8e4d2e"/>
-                <rect x="45" y="45" width="15" height="15" fill="#475647"/>
-                <rect x="65" y="35" width="20" height="5" fill="#8e4d2e"/>
-                <rect x="70" y="45" width="10" height="15" fill="#475647"/>
-                <rect x="10" y="55" width="15" height="5" fill="#8e4d2e"/>
-                <rect x="20" y="62" width="5" height="5" fill="#475647"/>
-                <rect x="40" y="70" width="15" height="5" fill="#8e4d2e"/>
-                <rect x="50" y="80" width="10" height="10" fill="#475647"/>
-                <rect x="70" y="70" width="5" height="15" fill="#8e4d2e"/>
-                <rect x="85" y="75" width="10" height="5" fill="#475647"/>
-              </svg>
-            </div>
-            <span class="font-label-caps text-xs text-primary font-bold tracking-wider">JINENG GUESTHOUSE CO-7729</span>
-          </div>
-        </section>
-      </div>
-      
-      <!-- Right Column: Order Summary (Sticky) -->
-      <div class="lg:col-span-5 relative">
-        <div class="sticky top-32 bg-surface rounded-2xl border border-outline-variant p-6 space-y-6 ambient-shadow">
-          <!-- Thumbnail Header -->
-          <div class="flex gap-4 items-start pb-6 border-b border-surface-variant">
-            <img class="w-24 h-24 rounded-lg object-cover flex-shrink-0" alt="Jineng Suite Bedroom Loft" src="./assets/WhatsApp Image 2026-07-27 at 12.03.32.jpeg"/>
-            <div>
-              <span class="font-label-caps text-[10px] text-on-surface-variant uppercase tracking-widest mb-1 block" id="summary-qty-header">1x Suite</span>
-              <h3 class="font-headline-md text-xl text-on-background mb-1" id="summary-title-header">Jineng Suite</h3>
-              <p class="font-body-md text-sm text-on-surface-variant flex items-center gap-1">
-                <span class="material-symbols-outlined text-[14px]">location_on</span> Jineng Guest House D47, Canggu
-              </p>
-            </div>
-          </div>
-          
-          <div>
-            <h4 class="font-headline-md text-2xl text-on-background mb-4">Price details</h4>
-            <div class="space-y-3">
-              <div class="flex justify-between items-center">
-                <span class="font-body-md text-on-surface" id="price-nights-label">$80 x 3 nights</span>
-                <span class="font-body-md text-on-background" id="price-nights-value">$240.00</span>
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="font-body-md text-on-surface underline decoration-outline-variant underline-offset-4">Taxes &amp; fees (10%)</span>
-                <span class="font-body-md text-on-background" id="price-tax-value">$24.00</span>
-              </div>
-            </div>
-            <div class="pt-6 mt-4 border-t border-surface-variant flex justify-between items-center">
-              <span class="font-body-md font-medium text-on-background">Total (USD)</span>
-              <span class="font-headline-md text-2xl text-primary" id="price-total-value">$264.00</span>
-            </div>
-          </div>
-          
-          <button id="btn-submit" type="button" class="w-full bg-primary hover:bg-primary-container text-on-primary py-4 rounded-xl font-label-caps text-label-caps uppercase tracking-widest transition-all duration-300 transform active:scale-[0.98] mt-2 flex items-center justify-center gap-2">
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">lock</span>
-            Confirm and pay
-          </button>
-          
-          <p class="text-center text-xs text-on-surface-variant flex items-center justify-center gap-1">
-            <span class="material-symbols-outlined text-[16px]">verified_user</span> Secure SSL Encrypted Checkout
-          </p>
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body
+    class="bg-background text-on-background antialiased min-h-screen flex flex-col font-body-md text-body-md selection:bg-primary-container selection:text-on-primary-container"
+  >
+    <!-- Header / TopAppBar -->
+    <header
+      class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-sm shadow-primary/5 transition-all duration-300 border-b border-surface-variant"
+    >
+      <div
+        class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto"
+      >
+        <a
+          class="font-headline-md text-2xl text-primary tracking-tight"
+          href="./index.html"
+          >JINENG GUESTHOUSE</a
+        >
+        <div class="hidden md:block">
+          <span
+            class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest"
+            >Secure Checkout</span
+          >
         </div>
       </div>
-    </div>
-  </main>
+    </header>
 
-  <!-- Footer -->
-  <footer class="w-full mt-section-gap bg-surface-container">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-20 max-w-container-max mx-auto border-t border-surface-container-low">
-      <div class="col-span-1 md:col-span-1 mb-8 md:mb-0">
-        <span class="font-headline-md text-2xl text-primary block mb-4">JINENG GUESTHOUSE</span>
-        <p class="font-body-md text-sm text-tertiary">© 2026 Jineng GuestHouse. All rights reserved.</p>
+    <!-- Main Checkout Content -->
+    <main
+      class="flex-grow pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-[1120px] mx-auto w-full"
+    >
+      <div class="mb-10">
+        <h1
+          class="font-headline-md text-4xl md:text-5xl text-on-background mb-2"
+        >
+          Confirm and pay
+        </h1>
       </div>
-      <div class="col-span-1 md:col-span-3 flex flex-wrap gap-x-8 gap-y-4 md:justify-end items-start pt-2">
-        <a class="font-body-md text-sm text-on-tertiary-fixed-variant hover:text-secondary transition-colors" href="#">Privacy Policy</a>
-        <a class="font-body-md text-sm text-on-tertiary-fixed-variant hover:text-secondary transition-colors" href="#">Terms of Service</a>
-        <a class="font-body-md text-sm text-on-tertiary-fixed-variant hover:text-secondary transition-colors" href="#">Sustainability</a>
-        <a class="font-body-md text-sm text-on-tertiary-fixed-variant hover:text-secondary transition-colors" href="#">Careers</a>
-      </div>
-    </div>
-  </footer>
 
-  <!-- Checkout JavaScript File -->
-  <script type="module" src="./checkout.js"></script>
-</body>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter lg:gap-20">
+        <!-- Left Column: Guest Form & Payment -->
+        <div class="lg:col-span-7 space-y-10">
+          <!-- Guest Details Section -->
+          <section>
+            <h2 class="font-headline-md text-2xl text-on-background mb-6">
+              Guest details
+            </h2>
+            <form id="checkout-form" class="space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <input
+                    class="w-full bg-transparent border border-outline-variant rounded-lg px-4 py-3 text-on-background focus:ring-1 focus:ring-primary focus:border-primary transition-all placeholder:text-on-surface-variant/50"
+                    id="firstName"
+                    placeholder="First name"
+                    type="text"
+                    required
+                  />
+                </div>
+                <div>
+                  <input
+                    class="w-full bg-transparent border border-outline-variant rounded-lg px-4 py-3 text-on-background focus:ring-1 focus:ring-primary focus:border-primary transition-all placeholder:text-on-surface-variant/50"
+                    id="lastName"
+                    placeholder="Last name"
+                    type="text"
+                    required
+                  />
+                </div>
+              </div>
+              <div>
+                <input
+                  class="w-full bg-transparent border border-outline-variant rounded-lg px-4 py-3 text-on-background focus:ring-1 focus:ring-primary focus:border-primary transition-all placeholder:text-on-surface-variant/50"
+                  id="email"
+                  placeholder="Email address"
+                  type="email"
+                  required
+                />
+              </div>
+              <div>
+                <input
+                  class="w-full bg-transparent border border-outline-variant rounded-lg px-4 py-3 text-on-background focus:ring-1 focus:ring-primary focus:border-primary transition-all placeholder:text-on-surface-variant/50"
+                  id="phone"
+                  placeholder="Phone number (e.g. +62...)"
+                  type="tel"
+                  required
+                />
+              </div>
+            </form>
+          </section>
+
+          <hr class="border-surface-variant" />
+
+          <!-- Payment Section -->
+          <section>
+            <h2 class="font-headline-md text-2xl text-on-background mb-6">
+              Pay with
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
+              <!-- Credit Card Option -->
+              <label class="relative cursor-pointer">
+                <input
+                  checked=""
+                  class="peer sr-only"
+                  name="paymentMethod"
+                  type="radio"
+                  value="card"
+                />
+                <div
+                  class="p-4 rounded-xl border border-outline-variant bg-surface hover:bg-surface-container-low peer-checked:border-primary peer-checked:bg-surface-container-low peer-checked:ring-1 peer-checked:ring-primary transition-all h-full flex flex-col items-center justify-center text-center gap-2"
+                >
+                  <span
+                    class="material-symbols-outlined text-2xl text-on-surface-variant peer-checked:text-primary"
+                    >credit_card</span
+                  >
+                  <span
+                    class="font-body-md text-sm text-on-background font-medium"
+                    >Credit Card</span
+                  >
+                </div>
+              </label>
+              <!-- Bank Transfer Option -->
+              <label class="relative cursor-pointer">
+                <input
+                  class="peer sr-only"
+                  name="paymentMethod"
+                  type="radio"
+                  value="transfer"
+                />
+                <div
+                  class="p-4 rounded-xl border border-outline-variant bg-surface hover:bg-surface-container-low peer-checked:border-primary peer-checked:bg-surface-container-low peer-checked:ring-1 peer-checked:ring-primary transition-all h-full flex flex-col items-center justify-center text-center gap-2"
+                >
+                  <span
+                    class="material-symbols-outlined text-2xl text-on-surface-variant peer-checked:text-primary"
+                    >account_balance</span
+                  >
+                  <span
+                    class="font-body-md text-sm text-on-background font-medium"
+                    >Bank Transfer</span
+                  >
+                </div>
+              </label>
+              <!-- E-Wallet Option -->
+              <label class="relative cursor-pointer">
+                <input
+                  class="peer sr-only"
+                  name="paymentMethod"
+                  type="radio"
+                  value="ewallet"
+                />
+                <div
+                  class="p-4 rounded-xl border border-outline-variant bg-surface hover:bg-surface-container-low peer-checked:border-primary peer-checked:bg-surface-container-low peer-checked:ring-1 peer-checked:ring-primary transition-all h-full flex flex-col items-center justify-center text-center gap-2"
+                >
+                  <span
+                    class="material-symbols-outlined text-2xl text-on-surface-variant peer-checked:text-primary"
+                    >wallet</span
+                  >
+                  <span
+                    class="font-body-md text-sm text-on-background font-medium"
+                    >E-Wallet</span
+                  >
+                </div>
+              </label>
+            </div>
+
+            <!-- Card Details Form (Dynamic) -->
+            <div
+              id="payment-card-form"
+              class="space-y-4 transition-all duration-300"
+            >
+              <div>
+                <div class="relative">
+                  <input
+                    class="w-full bg-transparent border border-outline-variant rounded-lg px-4 py-3 pl-12 text-on-background focus:ring-1 focus:ring-primary focus:border-primary transition-all placeholder:text-on-surface-variant/50"
+                    id="cardNumber"
+                    placeholder="Card number"
+                    type="text"
+                    maxlength="19"
+                  />
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <input
+                    class="w-full bg-transparent border border-outline-variant rounded-lg px-4 py-3 text-on-background focus:ring-1 focus:ring-primary focus:border-primary transition-all placeholder:text-on-surface-variant/50"
+                    id="expiry"
+                    placeholder="Expiration (MM/YY)"
+                    type="text"
+                    maxlength="5"
+                  />
+                </div>
+                <div>
+                  <input
+                    class="w-full bg-transparent border border-outline-variant rounded-lg px-4 py-3 text-on-background focus:ring-1 focus:ring-primary focus:border-primary transition-all placeholder:text-on-surface-variant/50"
+                    id="cvv"
+                    placeholder="CVV"
+                    type="text"
+                    maxlength="4"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Bank Transfer Details (Dynamic - Hidden by default) -->
+            <div
+              id="payment-transfer-form"
+              class="hidden bg-surface-container rounded-xl p-6 border border-outline-variant space-y-4 transition-all duration-300"
+            >
+              <h3 class="font-headline-md text-lg text-on-background">
+                Transfer Instructions
+              </h3>
+              <p class="text-sm text-on-surface-variant">
+                Please transfer the total amount to one of our official bank
+                accounts below:
+              </p>
+              <div class="space-y-3">
+                <div
+                  class="bg-surface p-4 rounded-lg flex justify-between items-center border border-outline-variant/30"
+                >
+                  <div>
+                    <span class="font-bold text-xs text-tertiary block"
+                      >BCA (Bank Central Asia)</span
+                    >
+                    <span
+                      class="font-headline-md text-lg text-primary tracking-wider"
+                      id="bca-account"
+                      >7720 918 223</span
+                    >
+                  </div>
+                  <button
+                    type="button"
+                    onclick="
+                      navigator.clipboard.writeText('7720918223');
+                      alert('BCA Account Number copied!');
+                    "
+                    class="text-primary hover:text-primary-container text-sm font-medium flex items-center gap-1"
+                  >
+                    <span class="material-symbols-outlined text-[16px]"
+                      >content_copy</span
+                    >
+                    Copy
+                  </button>
+                </div>
+                <div
+                  class="bg-surface p-4 rounded-lg flex justify-between items-center border border-outline-variant/30"
+                >
+                  <div>
+                    <span class="font-bold text-xs text-tertiary block"
+                      >Mandiri Bank</span
+                    >
+                    <span
+                      class="font-headline-md text-lg text-primary tracking-wider"
+                      id="mandiri-account"
+                      >145 0012 3456 78</span
+                    >
+                  </div>
+                  <button
+                    type="button"
+                    onclick="
+                      navigator.clipboard.writeText('1450012345678');
+                      alert('Mandiri Account Number copied!');
+                    "
+                    class="text-primary hover:text-primary-container text-sm font-medium flex items-center gap-1"
+                  >
+                    <span class="material-symbols-outlined text-[16px]"
+                      >content_copy</span
+                    >
+                    Copy
+                  </button>
+                </div>
+              </div>
+              <p class="text-xs text-on-surface-variant/80 italic">
+                Note: Please send the payment proof to our administrator after
+                completing the transfer.
+              </p>
+            </div>
+
+            <!-- E-Wallet details (Dynamic - Hidden by default) -->
+            <div
+              id="payment-ewallet-form"
+              class="hidden bg-surface-container rounded-xl p-6 border border-outline-variant flex flex-col items-center text-center space-y-4 transition-all duration-300"
+            >
+              <h3 class="font-headline-md text-lg text-on-background">
+                Scan QRIS to Pay
+              </h3>
+              <p class="text-sm text-on-surface-variant max-w-sm">
+                Scan the QR code below using your preferred e-wallet (GoPay,
+                OVO, Dana, ShopeePay, or LinkAja)
+              </p>
+              <div
+                class="bg-white p-4 rounded-xl border border-outline-variant/50 shadow-sm"
+              >
+                <!-- Inline SVG representing a beautiful stylized QR code -->
+                <svg class="w-48 h-48" viewBox="0 0 100 100">
+                  <rect x="0" y="0" width="100" height="100" fill="#ffffff" />
+                  <!-- Outer corners -->
+                  <rect x="5" y="5" width="25" height="25" fill="#475647" />
+                  <rect x="9" y="9" width="17" height="17" fill="#ffffff" />
+                  <rect x="13" y="13" width="9" height="9" fill="#475647" />
+
+                  <rect x="70" y="5" width="25" height="25" fill="#475647" />
+                  <rect x="74" y="9" width="17" height="17" fill="#ffffff" />
+                  <rect x="78" y="13" width="9" height="9" fill="#475647" />
+
+                  <rect x="5" y="70" width="25" height="25" fill="#475647" />
+                  <rect x="9" y="74" width="17" height="17" fill="#ffffff" />
+                  <rect x="13" y="78" width="9" height="9" fill="#475647" />
+
+                  <!-- Stylized QR blocks -->
+                  <rect x="40" y="10" width="10" height="5" fill="#8e4d2e" />
+                  <rect x="55" y="5" width="5" height="15" fill="#475647" />
+                  <rect x="45" y="25" width="15" height="5" fill="#8e4d2e" />
+                  <rect x="15" y="40" width="10" height="10" fill="#475647" />
+                  <rect x="35" y="40" width="5" height="20" fill="#8e4d2e" />
+                  <rect x="45" y="45" width="15" height="15" fill="#475647" />
+                  <rect x="65" y="35" width="20" height="5" fill="#8e4d2e" />
+                  <rect x="70" y="45" width="10" height="15" fill="#475647" />
+                  <rect x="10" y="55" width="15" height="5" fill="#8e4d2e" />
+                  <rect x="20" y="62" width="5" height="5" fill="#475647" />
+                  <rect x="40" y="70" width="15" height="5" fill="#8e4d2e" />
+                  <rect x="50" y="80" width="10" height="10" fill="#475647" />
+                  <rect x="70" y="70" width="5" height="15" fill="#8e4d2e" />
+                  <rect x="85" y="75" width="10" height="5" fill="#475647" />
+                </svg>
+              </div>
+              <span
+                class="font-label-caps text-xs text-primary font-bold tracking-wider"
+                >JINENG GUESTHOUSE CO-7729</span
+              >
+            </div>
+          </section>
+        </div>
+
+        <!-- Right Column: Order Summary (Sticky) -->
+        <div class="lg:col-span-5 relative">
+          <div
+            class="sticky top-32 bg-surface rounded-2xl border border-outline-variant p-6 space-y-6 ambient-shadow"
+          >
+            <!-- Thumbnail Header -->
+            <div
+              class="flex gap-4 items-start pb-6 border-b border-surface-variant"
+            >
+              <img
+                class="w-20 h-20 rounded-lg object-cover flex-shrink-0 shrink-0"
+                style="width: 80px; height: 80px; min-width: 80px; max-width: 80px; min-height: 80px; max-height: 80px;"
+                alt="Jineng Suite Bedroom Loft"
+                src="./assets/WhatsApp Image 2026-07-27 at 12.03.32.jpeg"
+              />
+              <div>
+                <span
+                  class="font-label-caps text-[10px] text-on-surface-variant uppercase tracking-widest mb-1 block"
+                  id="summary-qty-header"
+                  >1x Suite</span
+                >
+                <h3
+                  class="font-headline-md text-xl text-on-background mb-1"
+                  id="summary-title-header"
+                >
+                  Jineng Suite
+                </h3>
+                <p
+                  class="font-body-md text-sm text-on-surface-variant flex items-center gap-1"
+                >
+                  <span class="material-symbols-outlined text-[14px]"
+                    >location_on</span
+                  >
+                  Jineng Guest House D47, Canggu
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <h4 class="font-headline-md text-2xl text-on-background mb-4">
+                Price details
+              </h4>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span
+                    class="font-body-md text-on-surface"
+                    id="price-nights-label"
+                    >$80 x 3 nights</span
+                  >
+                  <span
+                    class="font-body-md text-on-background"
+                    id="price-nights-value"
+                    >$240.00</span
+                  >
+                </div>
+                <div class="flex justify-between items-center">
+                  <span
+                    class="font-body-md text-on-surface underline decoration-outline-variant underline-offset-4"
+                    >Taxes &amp; fees (10%)</span
+                  >
+                  <span
+                    class="font-body-md text-on-background"
+                    id="price-tax-value"
+                    >$24.00</span
+                  >
+                </div>
+              </div>
+              <div
+                class="pt-6 mt-4 border-t border-surface-variant flex justify-between items-center"
+              >
+                <span class="font-body-md font-medium text-on-background"
+                  >Total (USD)</span
+                >
+                <span
+                  class="font-headline-md text-2xl text-primary"
+                  id="price-total-value"
+                  >$264.00</span
+                >
+              </div>
+            </div>
+
+            <button
+              id="btn-submit"
+              type="button"
+              class="w-full bg-primary hover:bg-primary-container text-on-primary py-4 rounded-xl font-label-caps text-label-caps uppercase tracking-widest transition-all duration-300 transform active:scale-[0.98] mt-2 flex items-center justify-center gap-2"
+            >
+              <span
+                class="material-symbols-outlined"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >lock</span
+              >
+              Confirm and pay
+            </button>
+
+            <p
+              class="text-center text-xs text-on-surface-variant flex items-center justify-center gap-1"
+            >
+              <span class="material-symbols-outlined text-[16px]"
+                >verified_user</span
+              >
+              Secure SSL Encrypted Checkout
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full mt-section-gap bg-surface-container">
+      <div
+        class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-20 max-w-container-max mx-auto border-t border-surface-container-low"
+      >
+        <div class="col-span-1 md:col-span-1 mb-8 md:mb-0">
+          <span class="font-headline-md text-2xl text-primary block mb-4"
+            >JINENG GUESTHOUSE</span
+          >
+          <p class="font-body-md text-sm text-tertiary">
+            © 2026 Jineng GuestHouse. All rights reserved.
+          </p>
+        </div>
+        <div
+          class="col-span-1 md:col-span-3 flex flex-wrap gap-x-8 gap-y-4 md:justify-end items-start pt-2"
+        >
+          <a
+            class="font-body-md text-sm text-on-tertiary-fixed-variant hover:text-secondary transition-colors"
+            href="#"
+            >Privacy Policy</a
+          >
+          <a
+            class="font-body-md text-sm text-on-tertiary-fixed-variant hover:text-secondary transition-colors"
+            href="#"
+            >Terms of Service</a
+          >
+          <a
+            class="font-body-md text-sm text-on-tertiary-fixed-variant hover:text-secondary transition-colors"
+            href="#"
+            >Sustainability</a
+          >
+          <a
+            class="font-body-md text-sm text-on-tertiary-fixed-variant hover:text-secondary transition-colors"
+            href="#"
+            >Careers</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- Checkout JavaScript File -->
+    <script type="module" src="./checkout.js"></script>
+  </body>
 </html>

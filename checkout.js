@@ -207,55 +207,76 @@ if (btnSubmit) {
 
 function showSuccessModal(firstName, lastName, paymentMethod) {
   const modalOverlay = document.createElement('div');
-  modalOverlay.className = 'fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4';
+  modalOverlay.className = 'fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 overflow-y-auto';
   
   // Format payment method text for user display
   let paymentText = 'Credit Card';
-  let instructionHtml = `<p class="text-sm text-on-surface-variant mb-6">Your transaction has been processed securely via Credit Card. A confirmation email has been sent to you.</p>`;
+  let instructionHtml = `
+    <div class="bg-surface-container-low p-4 rounded-xl text-left border border-outline-variant/40 space-y-1.5 mb-6">
+      <p class="text-xs font-semibold text-primary uppercase tracking-wider flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-base">verified</span> Payment Completed
+      </p>
+      <p class="text-xs text-on-surface-variant leading-relaxed">Your transaction has been processed securely via Credit Card. A confirmation receipt has been sent to your email.</p>
+    </div>
+  `;
   
   if (paymentMethod === 'transfer') {
     paymentText = 'Bank Transfer';
     instructionHtml = `
-      <div class="bg-surface-container-low p-4 rounded-xl text-left border border-outline-variant/30 space-y-2 mb-6">
-        <p class="text-xs font-semibold text-primary uppercase tracking-wider">Instructions:</p>
-        <p class="text-sm text-on-surface-variant">Please transfer the total of <strong>$${bookingData.total.toFixed(2)}</strong> to either BCA or Mandiri. Send proof of payment to our WhatsApp admin to activate your booking.</p>
+      <div class="bg-surface-container-low p-4 rounded-xl text-left border border-outline-variant/40 space-y-1.5 mb-6">
+        <p class="text-xs font-semibold text-primary uppercase tracking-wider flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-base">account_balance</span> Bank Transfer Instructions
+        </p>
+        <p class="text-xs text-on-surface-variant leading-relaxed">
+          Please transfer <strong class="text-primary font-bold">$${bookingData.total.toFixed(2)}</strong> to <strong>BCA (7720 918 223)</strong> or <strong>Mandiri (145 0012 3456 78)</strong>, then click below to send proof of payment to our WhatsApp admin.
+        </p>
       </div>
     `;
   } else if (paymentMethod === 'ewallet') {
-    paymentText = 'E-Wallet';
+    paymentText = 'E-Wallet (QRIS)';
     instructionHtml = `
-      <div class="bg-surface-container-low p-4 rounded-xl text-left border border-outline-variant/30 space-y-2 mb-6">
-        <p class="text-xs font-semibold text-primary uppercase tracking-wider">Instructions:</p>
-        <p class="text-sm text-on-surface-variant">Verify the payment on your e-wallet app. Screenshot the receipt and send it to our WhatsApp admin to verify your booking.</p>
+      <div class="bg-surface-container-low p-4 rounded-xl text-left border border-outline-variant/40 space-y-1.5 mb-6">
+        <p class="text-xs font-semibold text-primary uppercase tracking-wider flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-base">qr_code_2</span> QRIS Instructions
+        </p>
+        <p class="text-xs text-on-surface-variant leading-relaxed">
+          Please complete payment on your E-Wallet app and screenshot the receipt. Click below to send confirmation to our WhatsApp admin.
+        </p>
       </div>
     `;
   }
 
   modalOverlay.innerHTML = `
-    <div class="bg-surface border border-outline-variant rounded-2xl p-8 max-w-md w-full text-center shadow-2xl animate-fade-in relative">
-      <div class="w-16 h-16 bg-primary-fixed rounded-full flex items-center justify-center mx-auto mb-6">
-        <span class="material-symbols-outlined text-4xl text-primary font-bold">check_circle</span>
+    <div class="bg-surface border border-outline-variant/60 rounded-3xl p-6 sm:p-8 max-w-md w-full text-center shadow-2xl relative my-auto max-h-[90vh] overflow-y-auto">
+      <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-primary/20">
+        <span class="material-symbols-outlined text-3xl text-primary font-bold">check_circle</span>
       </div>
-      <h2 class="font-headline-md text-3xl text-primary mb-2">Booking Confirmed!</h2>
-      <p class="text-on-surface font-medium mb-4">Thank you, ${firstName} ${lastName}!</p>
       
-      <div class="border-t border-b border-surface-variant/40 py-4 mb-6 text-left space-y-2 text-sm text-on-surface-variant">
-        <div class="flex justify-between"><span>Sanctuary:</span><span class="font-semibold text-on-background">${bookingData.title}</span></div>
-        <div class="flex justify-between"><span>Check-in:</span><span class="font-semibold text-on-background">${bookingData.checkin}</span></div>
-        <div class="flex justify-between"><span>Check-out:</span><span class="font-semibold text-on-background">${bookingData.checkout}</span></div>
-        <div class="flex justify-between"><span>Nights:</span><span class="font-semibold text-on-background">${bookingData.nights} Night(s)</span></div>
-        <div class="flex justify-between"><span>Payment Method:</span><span class="font-semibold text-on-background">${paymentText}</span></div>
-        <div class="flex justify-between border-t border-surface-variant/40 pt-2 font-medium text-on-background"><span>Total paid:</span><span class="text-primary font-bold text-lg">$${bookingData.total.toFixed(2)}</span></div>
+      <h2 class="font-headline-md text-2xl sm:text-3xl text-primary mb-1">Booking Confirmed!</h2>
+      <p class="text-on-surface-variant text-sm font-medium mb-5">Thank you, <span class="text-on-background font-semibold">${firstName} ${lastName}</span>!</p>
+      
+      <div class="bg-surface-container/70 rounded-2xl p-4 mb-5 text-left space-y-2.5 text-xs sm:text-sm border border-outline-variant/30">
+        <div class="flex justify-between items-center"><span class="text-on-surface-variant">Sanctuary</span><span class="font-semibold text-on-background">${bookingData.title}</span></div>
+        <div class="flex justify-between items-center"><span class="text-on-surface-variant">Check-in</span><span class="font-semibold text-on-background">${bookingData.checkin}</span></div>
+        <div class="flex justify-between items-center"><span class="text-on-surface-variant">Check-out</span><span class="font-semibold text-on-background">${bookingData.checkout}</span></div>
+        <div class="flex justify-between items-center"><span class="text-on-surface-variant">Duration</span><span class="font-semibold text-on-background">${bookingData.nights} Night(s)</span></div>
+        <div class="flex justify-between items-center"><span class="text-on-surface-variant">Payment Method</span><span class="font-semibold text-on-background">${paymentText}</span></div>
+        <div class="flex justify-between items-center border-t border-surface-variant/60 pt-2.5 mt-2 font-medium">
+          <span class="text-on-background font-semibold">Total Amount</span>
+          <span class="text-primary font-bold text-base sm:text-lg">$${bookingData.total.toFixed(2)}</span>
+        </div>
       </div>
       
       ${instructionHtml}
 
-      <div class="flex flex-col gap-2">
-        <button id="btn-whatsapp-confirm" class="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white py-3.5 rounded-xl font-label-caps text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 shadow-md">
-          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.436 2.5 1.173 3.466l-.768 2.808 2.877-.754a5.728 5.728 0 002.486.58h.003c3.181 0 5.768-2.586 5.769-5.766.001-3.18-2.585-5.766-5.769-5.766zm3.426 8.21c-.147.412-.852.793-1.185.83-.332.037-.732.062-2.199-.548-1.879-.78-3.08-2.693-3.173-2.817-.094-.124-.766-.998-.766-1.917 0-.92.476-1.371.645-1.558.17-.187.373-.234.497-.234.124 0 .249.001.356.006.113.005.263-.044.412.318.156.381.533 1.302.579 1.396.046.093.078.203.015.328-.062.125-.094.203-.187.312-.094.109-.196.244-.28.328-.094.094-.191.196-.081.385.111.189.493.815 1.059 1.319.73.65 1.343.852 1.532.946.189.094.298.078.41-.047.112-.125.476-.554.603-.742.127-.188.254-.156.425-.094.172.062 1.09.515 1.278.609.188.094.312.141.359.223.047.081.047.472-.1.884zM12 2C6.477 2 2 6.477 2 12c0 2.012.597 3.886 1.623 5.46L2 22l4.702-1.233A9.923 9.923 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.745 0-3.37-.5-4.75-1.37l-.34-.21-2.82.74.75-2.73-.23-.37A7.933 7.933 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/></svg>
-          Confirm via WhatsApp
+      <div class="flex flex-col gap-3">
+        <button id="btn-whatsapp-confirm" class="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white py-3.5 px-4 rounded-xl font-label-caps text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-md cursor-pointer" style="display: flex; align-items: center; justify-content: center;">
+          <svg class="fill-current shrink-0" style="width: 20px; height: 20px; min-width: 20px; min-height: 20px;" viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.436 2.5 1.173 3.466l-.768 2.808 2.877-.754a5.728 5.728 0 002.486.58h.003c3.181 0 5.768-2.586 5.769-5.766.001-3.18-2.585-5.766-5.769-5.766zm3.426 8.21c-.147.412-.852.793-1.185.83-.332.037-.732.062-2.199-.548-1.879-.78-3.08-2.693-3.173-2.817-.094-.124-.766-.998-.766-1.917 0-.92.476-1.371.645-1.558.17-.187.373-.234.497-.234.124 0 .249.001.356.006.113.005.263-.044.412.318.156.381.533 1.302.579 1.396.046.093.078.203.015.328-.062.125-.094.203-.187.312-.094.109-.196.244-.28.328-.094.094-.191.196-.081.385.111.189.493.815 1.059 1.319.73.65 1.343.852 1.532.946.189.094.298.078.41-.047.112-.125.476-.554.603-.742.127-.188.254-.156.425-.094.172.062 1.09.515 1.278.609.188.094.312.141.359.223.047.081.047.472-.1.884zM12 2C6.477 2 2 6.477 2 12c0 2.012.597 3.886 1.623 5.46L2 22l4.702-1.233A9.923 9.923 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.745 0-3.37-.5-4.75-1.37l-.34-.21-2.82.74.75-2.73-.23-.37A7.933 7.933 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/>
+          </svg>
+          <span style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Confirm via WhatsApp</span>
         </button>
-        <button id="btn-close-modal" class="w-full bg-surface border border-outline-variant hover:bg-surface-container-low text-on-surface py-3 rounded-xl font-label-caps text-xs uppercase tracking-widest transition-all">
+        <button id="btn-close-modal" class="w-full bg-transparent hover:bg-surface-container-high border border-outline-variant text-on-surface py-3 px-4 rounded-xl font-label-caps text-xs uppercase tracking-wider transition-all cursor-pointer">
           Back to Home
         </button>
       </div>
@@ -269,7 +290,7 @@ function showSuccessModal(firstName, lastName, paymentMethod) {
   waBtn.addEventListener('click', () => {
     const phoneNum = document.getElementById('phone').value.trim();
     const whatsappNumber = '6285111044817'; // Official Jineng Guest House WhatsApp number
-    const message = `Hello Jineng GuestHouse!\n\nI have confirmed my booking inquiry.\n\n🏨 Room: ${bookingData.title}\n📅 Check-In: ${bookingData.checkin}\n📅 Check-Out: ${bookingData.checkout}\n⏳ Nights: ${bookingData.nights} Night(s)\n💳 Payment Method: ${paymentText}\n💰 Total Amount: $${bookingData.total.toFixed(2)}\n\nGuest Info:\n👤 Name: ${firstName} ${lastName}\n📧 Email: ${email}\n📞 Phone: ${phoneNum}\n\nPlease confirm my reservation. Thank you!`;
+    const message = `Hello Jineng GuestHouse!\n\nI have confirmed my booking inquiry.\n\n🏨 Room: ${bookingData.title}\n📅 Check-In: ${bookingData.checkin}\n📅 Check-Out: ${bookingData.checkout}\n⏳ Nights: ${bookingData.nights} Night(s)\n💳 Payment Method: ${paymentText}\n💰 Total Amount: $${bookingData.total.toFixed(2)}\n\nGuest Info:\n👤 Name: ${firstName} ${lastName}\n📧 Email: ${document.getElementById('email').value.trim()}\n📞 Phone: ${phoneNum}\n\nPlease confirm my reservation. Thank you!`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');

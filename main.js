@@ -10,6 +10,51 @@ window.addEventListener('scroll', () => {
   }
 });
 
+// Smooth scrolling for anchor links with dynamic navbar offset
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener('click', function (e) {
+    const targetId = this.getAttribute('href');
+    if (!targetId || targetId === '#') return;
+
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      e.preventDefault();
+      const nav = document.getElementById('main-nav');
+      const navHeight = nav ? nav.offsetHeight : 80;
+
+      let targetPosition;
+      if (targetId === '#booking' || targetId === '#sanctuary') {
+        // Scroll smoothly to the top of the page so Hero banner & Booking Form are perfectly framed
+        targetPosition = 0;
+      } else {
+        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+        targetPosition = elementPosition - navHeight - 16;
+      }
+
+      window.scrollTo({
+        top: Math.max(0, targetPosition),
+        behavior: 'smooth'
+      });
+
+      if (history.pushState) {
+        history.pushState(null, null, targetId);
+      } else {
+        location.hash = targetId;
+      }
+
+      // Focus check-in date input when navigating to #booking
+      if (targetId === '#booking') {
+        const checkIn = document.getElementById('check-in');
+        if (checkIn) {
+          setTimeout(() => {
+            checkIn.focus();
+          }, 500);
+        }
+      }
+    }
+  });
+});
+
 // Setup date input limits and validation
 const checkInInput = document.getElementById('check-in');
 const checkOutInput = document.getElementById('check-out');
@@ -90,36 +135,52 @@ if (filterBtns.length > 0 && galleryItems.length > 0) {
 // -------------------------------------------------------------
 function openLightbox(src, caption) {
   const lightboxOverlay = document.createElement('div');
-  lightboxOverlay.className = 'fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/90 backdrop-blur-md p-4 animate-fade-in cursor-zoom-out';
+  lightboxOverlay.className = 'fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/80 backdrop-blur-sm p-4 transition-opacity duration-200 opacity-0 cursor-pointer';
   
   lightboxOverlay.innerHTML = `
-    <button class="absolute top-6 right-6 text-white/80 hover:text-white bg-black/40 hover:bg-black/80 rounded-full p-3 transition-all flex items-center justify-center" id="close-lightbox">
+    <button class="absolute top-6 right-6 text-white/80 hover:text-white bg-black/50 hover:bg-black/80 rounded-full p-3 transition-all flex items-center justify-center cursor-pointer" id="close-lightbox" title="Close">
       <span class="material-symbols-outlined text-3xl">close</span>
     </button>
-    <div class="max-w-4xl max-h-[80vh] overflow-hidden rounded-2xl shadow-2xl mb-4" onclick="event.stopPropagation()">
-      <img src="${src}" alt="${caption}" class="w-full h-full object-contain max-h-[80vh] rounded-2xl"/>
+    <div class="max-w-4xl max-h-[85vh] overflow-hidden rounded-2xl shadow-2xl mb-4 transition-transform duration-200 scale-95" id="lightbox-container" onclick="event.stopPropagation()">
+      <img src="${src}" alt="${caption || ''}" class="w-full h-full object-contain max-h-[85vh] rounded-2xl select-none"/>
     </div>
-    <p class="text-white/90 font-headline-md text-lg text-center drop-shadow-md" onclick="event.stopPropagation()">${caption || ''}</p>
+    ${caption ? `<p class="text-white/90 font-body-md text-base text-center drop-shadow-md px-4" onclick="event.stopPropagation()">${caption}</p>` : ''}
   `;
 
   document.body.appendChild(lightboxOverlay);
   document.body.style.overflow = 'hidden';
 
-  const closeBtn = lightboxOverlay.querySelector('#close-lightbox');
+  // Smooth entrance
+  requestAnimationFrame(() => {
+    lightboxOverlay.classList.remove('opacity-0');
+    lightboxOverlay.classList.add('opacity-100');
+    const container = lightboxOverlay.querySelector('#lightbox-container');
+    if (container) {
+      container.classList.remove('scale-95');
+      container.classList.add('scale-100');
+    }
+  });
+
   const closeHandler = () => {
-    lightboxOverlay.remove();
-    document.body.style.overflow = '';
+    lightboxOverlay.classList.remove('opacity-100');
+    lightboxOverlay.classList.add('opacity-0');
+    setTimeout(() => {
+      lightboxOverlay.remove();
+      document.body.style.overflow = '';
+    }, 200);
   };
 
-  closeBtn.addEventListener('click', closeHandler);
+  const closeBtn = lightboxOverlay.querySelector('#close-lightbox');
+  if (closeBtn) closeBtn.addEventListener('click', closeHandler);
   lightboxOverlay.addEventListener('click', closeHandler);
 
-  document.addEventListener('keydown', function escHandler(e) {
+  const escHandler = (e) => {
     if (e.key === 'Escape') {
       closeHandler();
       document.removeEventListener('keydown', escHandler);
     }
-  });
+  };
+  document.addEventListener('keydown', escHandler);
 }
 
 // Attach lightbox to gallery items and gallery triggers

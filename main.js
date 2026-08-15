@@ -1,3 +1,33 @@
+// Mobile navbar menu toggle
+const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+if (mobileMenuToggle && mobileMenu) {
+  const toggleIcon = mobileMenuToggle.querySelector('.material-symbols-outlined');
+
+  const closeMobileMenu = () => {
+    mobileMenu.classList.remove('flex');
+    mobileMenu.classList.add('hidden');
+    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+    if (toggleIcon) toggleIcon.textContent = 'menu';
+  };
+
+  mobileMenuToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.contains('flex');
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      mobileMenu.classList.remove('hidden');
+      mobileMenu.classList.add('flex');
+      mobileMenuToggle.setAttribute('aria-expanded', 'true');
+      if (toggleIcon) toggleIcon.textContent = 'close';
+    }
+  });
+
+  mobileMenu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMobileMenu);
+  });
+}
+
 // Simple scroll effect for top nav
 window.addEventListener('scroll', () => {
   const nav = document.getElementById('main-nav');

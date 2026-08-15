@@ -38,9 +38,9 @@
     />
 
     <!-- Main Stylesheet -->
-    <script type="module" crossorigin src="/assets/main-DVBGLYMP.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/style-qswuSmmr.js">
-    <link rel="stylesheet" crossorigin href="/assets/style-CqcvfMCR.css">
+    <script type="module" crossorigin src="/assets/main-BOHr9g-9.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/style-BvLxuHvP.js">
+    <link rel="stylesheet" crossorigin href="/assets/style-B7bIX3-q.css">
   </head>
   <body
     class="bg-surface text-on-surface font-body-md text-body-md antialiased selection:bg-primary-container selection:text-on-primary-container"
@@ -96,13 +96,39 @@
             >Location</a
           >
         </nav>
-        <a
-          class="bg-primary text-on-primary px-6 py-3 rounded-full font-body-md text-body-md hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 shadow-md flex items-center gap-2"
-          href="#booking"
-        >
-          Book Now
-        </a>
+        <div class="flex items-center gap-3">
+          <a
+            class="hidden sm:flex bg-primary text-on-primary px-6 py-3 rounded-full font-body-md text-body-md hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 shadow-md items-center gap-2"
+            href="#booking"
+          >
+            Book Now
+          </a>
+          <button
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+            aria-label="Toggle navigation menu"
+            class="md:hidden flex items-center justify-center w-11 h-11 rounded-full text-on-surface hover:bg-surface-container-low transition-colors"
+            id="mobile-menu-toggle"
+            type="button"
+          >
+            <span class="material-symbols-outlined text-3xl">menu</span>
+          </button>
+        </div>
       </div>
+
+      <nav
+        class="hidden md:hidden flex-col gap-1 px-margin-mobile pb-4 pt-2 border-t border-surface-variant/50 mt-4"
+        id="mobile-menu"
+      >
+        <a class="px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors" href="#sanctuary">Sanctuary</a>
+        <a class="px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors" href="#suite">The Suite</a>
+        <a class="px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors" href="#gallery">Gallery</a>
+        <a class="px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors" href="#amenities">Essentials</a>
+        <a class="px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors" href="#reviews">Reviews</a>
+        <a class="px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors" href="#faq">FAQ</a>
+        <a class="px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors" href="#location">Location</a>
+        <a class="mt-2 bg-primary text-on-primary px-4 py-3 rounded-lg font-body-md text-body-md text-center hover:bg-primary-container hover:text-on-primary-container transition-all" href="#booking">Book Now</a>
+      </nav>
     </header>
 
     <main class="pt-[100px]" id="sanctuary">

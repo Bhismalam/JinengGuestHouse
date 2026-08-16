@@ -19,6 +19,10 @@ Dokumen ini digunakan untuk melacak daftar tugas (tasks) yang harus dibuat, dipe
 - [x] Menyesuaikan konten teks (deskripsi mezzanine loft & bata merah, harga $35/malam, alamat Jineng Guest House D47, nomor WA +62 851-1104-4817)
 - [x] Perbaikan tampilan gambar thumbnail Order Summary di `checkout.html` (penyesuaian `tailwind.config.js` content path & inline styling pembatas ukuran 80x80px)
 - [x] Re-build produksi berhasil (`npm run build`)
+- [x] Navbar mobile: tambah hamburger menu (`#mobile-menu-toggle` / `#mobile-menu`) karena link navigasi hilang total di layar kecil
+- [x] Perbaikan logo "JINENG GUESTHOUSE" wrap 2 baris di mobile (menutupi hero) & form booking yang terpotong (`overflow-hidden` section hero)
+- [x] Fitur cek ketersediaan kamar real-time via Supabase (`supabase/schema.sql`, `supabaseClient.js`, `availability.js`) — homepage cek dulu sebelum lanjut ke checkout, checkout re-check + simpan booking `pending`
 - [ ] Deploy ke hosting (Vercel / Netlify / cPanel)
-
-
+- [ ] **Setup Supabase project** (user): buat project di supabase.com, jalankan `supabase/schema.sql`, isi `.env` dari `.env.example`
+- [ ] Uji end-to-end fitur cek ketersediaan setelah Supabase dikonfigurasi (lihat langkah verifikasi di `konteks/readme.md`)
+- [ ] (Opsional, nanti) Panel admin kelola booking — untuk saat ini pakai Table Editor Supabase langsung

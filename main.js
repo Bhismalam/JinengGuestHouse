@@ -1,3 +1,5 @@
+import { checkAvailability } from './availability.js';
+
 // Mobile navbar menu toggle
 const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
@@ -110,8 +112,11 @@ if (checkInInput && checkOutInput) {
     }
   });
 
-  // Handle booking form submission
-  bookingForm.addEventListener('submit', (e) => {
+  // Handle booking form submission — check real availability before allowing checkout
+  const availabilityResult = document.getElementById('availability-result');
+  const checkAvailabilityBtn = document.getElementById('btn-check-availability');
+
+  bookingForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const checkInDate = checkInInput.value;
     const checkOutDate = checkOutInput.value;
@@ -122,8 +127,42 @@ if (checkInInput && checkOutInput) {
       return;
     }
 
-    // Redirect to checkout page with query params
-    window.location.href = `./checkout.html?checkin=${checkInDate}&checkout=${checkOutDate}&quantity=${rooms}`;
+    checkAvailabilityBtn.disabled = true;
+    checkAvailabilityBtn.textContent = 'Checking...';
+    availabilityResult.classList.add('hidden');
+
+    const result = await checkAvailability(checkInDate, checkOutDate, Number(rooms));
+
+    checkAvailabilityBtn.disabled = false;
+    checkAvailabilityBtn.textContent = 'Check Availability';
+    availabilityResult.classList.remove('hidden');
+
+    if (result.error) {
+      availabilityResult.className = 'mt-4 rounded-xl p-4 text-sm md:text-base bg-error-container text-on-error-container';
+      availabilityResult.innerHTML = `
+        <p class="font-semibold mb-1">Something went wrong.</p>
+        <p>We couldn't check availability right now. Please try again, or contact us directly on WhatsApp.</p>
+      `;
+      return;
+    }
+
+    if (result.available) {
+      availabilityResult.className = 'mt-4 rounded-xl p-4 text-sm md:text-base bg-primary-fixed text-on-primary-fixed';
+      availabilityResult.innerHTML = `
+        <p class="font-semibold mb-2">Great news — your dates are available!</p>
+        <a
+          href="./checkout.html?checkin=${checkInDate}&checkout=${checkOutDate}&quantity=${rooms}"
+          class="inline-block bg-primary text-on-primary px-6 py-2.5 rounded-full font-body-md hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 shadow-md"
+          >Lanjutkan ke Booking</a
+        >
+      `;
+    } else {
+      availabilityResult.className = 'mt-4 rounded-xl p-4 text-sm md:text-base bg-error-container text-on-error-container';
+      availabilityResult.innerHTML = `
+        <p class="font-semibold mb-1">Sorry, we're fully booked for those dates.</p>
+        <p>Please try different dates, or contact us on WhatsApp for other options.</p>
+      `;
+    }
   });
 }
 

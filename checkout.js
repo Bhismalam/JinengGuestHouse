@@ -1,3 +1,6 @@
+import { supabase } from './supabaseClient.js';
+import { checkAvailability } from './availability.js';
+
 // Parse query params for booking details
 function parseQueryParams() {
   const params = new URLSearchParams(window.location.search);
@@ -56,6 +59,7 @@ function parseQueryParams() {
   return {
     title,
     qtyText,
+    units: qty === '2' ? 2 : 1,
     checkin: checkinDate.toISOString().split('T')[0],
     checkout: checkoutDate.toISOString().split('T')[0],
     nights: numNights,
@@ -153,9 +157,19 @@ if (cvvInput) {
 const btnSubmit = document.getElementById('btn-submit');
 const guestFormInputs = ['firstName', 'lastName', 'email', 'phone'];
 
+const availabilityError = document.getElementById('checkout-availability-error');
+
+function showAvailabilityError(message) {
+  if (!availabilityError) return;
+  availabilityError.textContent = message;
+  availabilityError.classList.remove('hidden');
+}
+
 if (btnSubmit) {
-  btnSubmit.addEventListener('click', (e) => {
+  btnSubmit.addEventListener('click', async (e) => {
     e.preventDefault();
+
+    if (availabilityError) availabilityError.classList.add('hidden');
 
     // Check Guest form validity manually
     let isValid = true;
@@ -199,6 +213,46 @@ if (btnSubmit) {
     const lastName = document.getElementById('lastName').value.trim();
     const email = document.getElementById('email').value.trim();
     const phone = document.getElementById('phone').value.trim();
+
+    btnSubmit.disabled = true;
+    const originalBtnHtml = btnSubmit.innerHTML;
+    btnSubmit.innerHTML = 'Checking availability...';
+
+    // Re-check availability to guard against another guest booking the same
+    // dates while this one was filling out the checkout form.
+    const availability = await checkAvailability(bookingData.checkin, bookingData.checkout, bookingData.units);
+
+    if (availability.error) {
+      btnSubmit.disabled = false;
+      btnSubmit.innerHTML = originalBtnHtml;
+      showAvailabilityError("We couldn't verify availability right now. Please try again.");
+      return;
+    }
+
+    if (!availability.available) {
+      btnSubmit.disabled = false;
+      btnSubmit.innerHTML = originalBtnHtml;
+      showAvailabilityError('Sorry, these dates just got booked by someone else. Please go back and pick different dates.');
+      return;
+    }
+
+    const { error: insertError } = await supabase.from('bookings').insert({
+      room_units: bookingData.units,
+      check_in: bookingData.checkin,
+      check_out: bookingData.checkout,
+      guest_name: `${firstName} ${lastName}`,
+      guest_email: email,
+      guest_phone: phone,
+    });
+
+    btnSubmit.disabled = false;
+    btnSubmit.innerHTML = originalBtnHtml;
+
+    if (insertError) {
+      console.error('Booking insert failed:', insertError);
+      showAvailabilityError("We couldn't save your booking. Please try again or contact us on WhatsApp.");
+      return;
+    }
 
     // Create a beautiful Success Overlay Modal
     showSuccessModal(firstName, lastName, paymentMethod);

@@ -38,9 +38,9 @@
     />
 
     <!-- Main Stylesheet -->
-    <script type="module" crossorigin src="/assets/main-BWVCsRYh.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/style-CUFKe9sy.js">
-    <link rel="stylesheet" crossorigin href="/assets/style-Cl9hQAQ1.css">
+    <script type="module" crossorigin src="/assets/main-Dn6Xk7TT.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/availability-Kk6_mOYc.js">
+    <link rel="stylesheet" crossorigin href="/assets/availability-CvzvPuJ2.css">
   </head>
   <body
     class="bg-surface text-on-surface font-body-md text-body-md antialiased selection:bg-primary-container selection:text-on-primary-container"
@@ -120,14 +120,46 @@
         class="hidden md:hidden flex-col gap-1 px-margin-mobile pb-4 pt-2 border-t border-surface-variant/50 mt-4"
         id="mobile-menu"
       >
-        <a class="px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors" href="#sanctuary">Sanctuary</a>
-        <a class="px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors" href="#suite">The Suite</a>
-        <a class="px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors" href="#gallery">Gallery</a>
-        <a class="px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors" href="#amenities">Essentials</a>
-        <a class="px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors" href="#reviews">Reviews</a>
-        <a class="px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors" href="#faq">FAQ</a>
-        <a class="px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors" href="#location">Location</a>
-        <a class="mt-2 bg-primary text-on-primary px-4 py-3 rounded-lg font-body-md text-body-md text-center hover:bg-primary-container hover:text-on-primary-container transition-all" href="#booking">Book Now</a>
+        <a
+          class="px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors"
+          href="#sanctuary"
+          >Sanctuary</a
+        >
+        <a
+          class="px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors"
+          href="#suite"
+          >The Suite</a
+        >
+        <a
+          class="px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors"
+          href="#gallery"
+          >Gallery</a
+        >
+        <a
+          class="px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors"
+          href="#amenities"
+          >Essentials</a
+        >
+        <a
+          class="px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors"
+          href="#reviews"
+          >Reviews</a
+        >
+        <a
+          class="px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors"
+          href="#faq"
+          >FAQ</a
+        >
+        <a
+          class="px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors"
+          href="#location"
+          >Location</a
+        >
+        <a
+          class="mt-2 bg-primary text-on-primary px-4 py-3 rounded-lg font-body-md text-body-md text-center hover:bg-primary-container hover:text-on-primary-container transition-all"
+          href="#booking"
+          >Book Now</a
+        >
       </nav>
     </header>
 
@@ -224,12 +256,17 @@
               </div>
             </div>
             <button
+              id="btn-check-availability"
               type="submit"
-              class="w-full md:w-auto bg-primary text-on-primary px-8 py-4 rounded-xl font-body-md text-body-md whitespace-nowrap hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 shadow-md"
+              class="w-full md:w-auto bg-primary text-on-primary px-8 py-4 rounded-xl font-body-md text-body-md whitespace-nowrap hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
             >
               Check Availability
             </button>
           </form>
+          <div
+            id="availability-result"
+            class="hidden mt-4 rounded-xl p-4 text-sm md:text-base"
+          ></div>
         </div>
       </section>
 
@@ -1181,9 +1218,9 @@
           </p>
           <a
             class="text-primary font-semibold hover:underline font-body-md text-body-md"
-            href="https://wa.me/6285111044817"
+            href="https://wa.me/6287862734767"
             target="_blank"
-            >+62 851-1104-4817</a
+            >+6287862734767</a
           >
           <p
             class="text-on-tertiary-fixed-variant font-body-md text-body-md mt-4 text-sm"
@@ -1206,4 +1243,4 @@
 
     <!-- Main JavaScript File -->
   </body>
-</html> 
+</html>

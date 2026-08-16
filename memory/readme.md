@@ -66,5 +66,32 @@ Dokumen ini digunakan untuk mencatat riwayat pekerjaan, keputusan arsitektur, da
   - Menata ulang kotak detail pesanan (*Sanctuary, Check-in, Check-out, Duration, Payment Method, Total Amount*) serta kotak instruksi pembayaran agar tampak mewah dan rapi.
 - **Status Build**: `npm run build` berhasil di-generate (Vite v5).
 
+### 2026-08-05 — Perbaikan Gambar & Tampilan Modal di Checkout
+- Thumbnail Order Summary di `checkout.html` diubah dari pembatasan 80x80px kaku (inline style) menjadi `w-24 h-24` yang lebih rapi.
+- Modal "Booking Confirmed!" dirombak ulang: kotak detail pesanan & instruksi pembayaran (Bank Transfer/QRIS) dibuat lebih informatif dengan ikon, termasuk detail rekening bank (BCA/Mandiri) langsung di instruksi transfer.
+- **Status Build**: `npm run build` berhasil (Vite v5).
 
+### 2026-08-06 — Perbaikan Link Google Maps & Redesain Struktur index.html
+- Memperbaiki link/embed Google Maps di section Location.
+- Merapikan ulang format indentasi & struktur `index.html` (doctype lowercase, atribut multi-baris) tanpa mengubah konten/fungsi.
+- **Status Build**: `npm run build` berhasil (Vite v5).
 
+### 2026-08-09 — Smooth Scroll Navbar & Perbaikan Lightbox Galeri
+- Menambahkan smooth scroll kustom di `main.js` untuk semua link anchor (`a[href^="#"]`), dengan offset dinamis mengikuti tinggi navbar (`#main-nav`) supaya section tidak tertutup navbar saat di-scroll ke.
+- Menambahkan `scroll-mt-*` di tiap section (`#suite`, `#gallery`, `#amenities`, dst.) agar anchor scroll mendarat pas di bawah navbar.
+- Merombak transisi lightbox galeri (fade + scale animasi CSS transition, bukan `animate-fade-in` Tailwind) agar buka/tutup lebih halus.
+- **Status Build**: `npm run build` berhasil (Vite v5).
+
+### 2026-08-16 — Perbaikan Responsif Mobile & Fitur Cek Ketersediaan Kamar Real-Time
+- **Navbar Mobile**: Menambahkan tombol hamburger (`#mobile-menu-toggle`) & panel dropdown (`#mobile-menu`) di `index.html` karena sebelumnya link navigasi (`hidden md:flex`) hilang total tanpa pengganti di layar mobile.
+- **Perbaikan Logo Wrap**: Logo "JINENG GUESTHOUSE" memakai `text-headline-md` (32px) tanpa `whitespace-nowrap` sehingga wrap 2 baris di layar sempit, membuat tinggi header melebihi asumsi `pt-[100px]` pada `<main>` dan menutupi hero + form booking. Diperbaiki dengan ukuran font responsif (`text-lg sm:text-2xl md:text-headline-md`) + `whitespace-nowrap`.
+- **Perbaikan Form Booking Terpotong**: Section hero punya `overflow-hidden`, sedangkan form booking mengambang keluar section (`-bottom-8`) sehingga tombol "Check Availability" ter-clip. `overflow-hidden` dihapus dari section (gambar background tetap aman karena punya div `overflow-hidden` terpisah).
+- **Fitur Baru — Cek Ketersediaan Kamar Real-Time (Supabase)**:
+  - Sebelumnya "Check Availability" hanya validasi tanggal lalu langsung redirect ke checkout — tidak ada pengecekan inventori sama sekali.
+  - Menambahkan Supabase (Postgres + `@supabase/supabase-js`) sebagai backend: tabel `bookings`, RLS insert-only untuk publik, dan view `booking_availability` (tanpa data tamu) untuk query publik. Skema di `supabase/schema.sql`.
+  - Model kamar: 2 unit identik total. "1 Room (Jineng Suite)" = 1 unit, "Entire Property" = 2 unit.
+  - `availability.js` menghitung overlap tanggal vs kapasitas 2 unit. Homepage (`main.js`) menampilkan hasil inline (tersedia → tombol lanjut ke checkout; penuh → pesan alternatif) alih-alih redirect langsung.
+  - `checkout.js` melakukan re-check ketersediaan (guard race condition) + insert booking `status='pending'` ke Supabase sebelum modal sukses ditampilkan — sehingga tanggal langsung terkunci begitu checkout selesai.
+  - `supabaseClient.js` sengaja tidak throw saat `.env` belum diisi (pakai stub client) — supaya seluruh `main.js` tidak ikut rusak jika Supabase belum dikonfigurasi.
+  - Admin mengelola status booking (confirm/cancel) langsung dari Supabase Table Editor — belum ada panel admin custom.
+- **Status Build**: `npm run build` berhasil (Vite v5). Fitur availability belum bisa diuji end-to-end sampai user membuat project Supabase & mengisi `.env` (lihat `.env.example` dan `supabase/schema.sql`).

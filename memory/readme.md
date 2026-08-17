@@ -95,3 +95,15 @@ Dokumen ini digunakan untuk mencatat riwayat pekerjaan, keputusan arsitektur, da
   - `supabaseClient.js` sengaja tidak throw saat `.env` belum diisi (pakai stub client) — supaya seluruh `main.js` tidak ikut rusak jika Supabase belum dikonfigurasi.
   - Admin mengelola status booking (confirm/cancel) langsung dari Supabase Table Editor — belum ada panel admin custom.
 - **Status Build**: `npm run build` berhasil (Vite v5). Fitur availability belum bisa diuji end-to-end sampai user membuat project Supabase & mengisi `.env` (lihat `.env.example` dan `supabase/schema.sql`).
+
+### 2026-08-16 — Setup Supabase Selesai & Verifikasi End-to-End
+- User membuat project Supabase (ref `typlsvicnjwhvxrhvntx`) dan menjalankan `supabase/schema.sql` lewat SQL Editor.
+- **Bug ditemukan saat setup**: `.env` awalnya hanya diisi `VITE_SUPABASE_ANON_KEY`, sementara `VITE_SUPABASE_URL` masih placeholder `your-project-ref.supabase.co` — diperbaiki dengan decode klaim `ref` dari JWT anon key (data publik di dalam key itu sendiri, bukan rahasia) untuk mendapatkan URL project yang benar.
+- **Verifikasi langsung ke Supabase REST API** (tanpa browser, karena tidak ada chromium-cli/Playwright di environment ini):
+  - Query `booking_availability` sebelum ada data → kosong, konfirmasi schema ter-apply.
+  - Insert booking test (tanggal dummy `2099-01-01`–`2099-01-02`, `guest_name: "TEST DELETE ME"`) via anon key → berhasil (201), konfirmasi RLS insert-only bekerja.
+  - View `booking_availability` langsung menampilkan booking baru tanpa data tamu; query langsung ke tabel `bookings` mentah mengembalikan array kosong untuk anon → konfirmasi data tamu (nama/email/telepon) tidak bisa dibaca publik.
+  - Query overlap tanggal (logic yang sama dengan `availability.js`) diuji manual: tanggal bertabrakan → terdeteksi 1 unit terpakai; tanggal tidak bertabrakan → kosong/tersedia penuh. Akurat.
+  - `npm run build` setelah `.env` terisi benar → chunk `availability.js` kembali penuh ~221KB (sebelumnya di-tree-shake jadi ~1.4KB saat `.env` kosong), konfirmasi Supabase client ter-bundle dengan benar.
+- **Belum dibereskan**: baris booking percobaan (`TEST DELETE ME`) masih ada di tabel `bookings` — anon key tidak punya izin SELECT/DELETE (RLS), jadi harus dihapus manual oleh user lewat Table Editor.
+- **Diskusi push ke GitHub**: `.env` sudah otomatis aman berkat `.gitignore` yang dibuat sebelumnya (dan belum pernah ter-commit di riwayat manapun) — user diarahkan untuk tetap `git status` sebelum commit dan pastikan `.gitignore` ikut ter-push.

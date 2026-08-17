@@ -22,7 +22,12 @@ Dokumen ini digunakan untuk melacak daftar tugas (tasks) yang harus dibuat, dipe
 - [x] Navbar mobile: tambah hamburger menu (`#mobile-menu-toggle` / `#mobile-menu`) karena link navigasi hilang total di layar kecil
 - [x] Perbaikan logo "JINENG GUESTHOUSE" wrap 2 baris di mobile (menutupi hero) & form booking yang terpotong (`overflow-hidden` section hero)
 - [x] Fitur cek ketersediaan kamar real-time via Supabase (`supabase/schema.sql`, `supabaseClient.js`, `availability.js`) — homepage cek dulu sebelum lanjut ke checkout, checkout re-check + simpan booking `pending`
-- [ ] Deploy ke hosting (Vercel / Netlify / cPanel)
-- [ ] **Setup Supabase project** (user): buat project di supabase.com, jalankan `supabase/schema.sql`, isi `.env` dari `.env.example`
-- [ ] Uji end-to-end fitur cek ketersediaan setelah Supabase dikonfigurasi (lihat langkah verifikasi di `konteks/readme.md`)
+- [x] Setup Supabase project (user) — project ref `typlsvicnjwhvxrhvntx`, schema `bookings`/RLS/`booking_availability` sudah dijalankan, `.env` sudah diisi (URL sempat salah placeholder, sudah diperbaiki dari klaim `ref` di anon key)
+- [x] Uji end-to-end fitur cek ketersediaan langsung ke Supabase REST API: insert booking berhasil (RLS insert-only), view availability menampilkan tanggal terpakai tanpa data tamu, tabel `bookings` mentah terbukti tidak bisa dibaca publik, logic overlap tanggal akurat
+- [x] Tambah `.gitignore` (sebelumnya tidak ada) supaya `.env` tidak iksut ter-push ke GitHub
+
+## Belum Selesai ⏳
+- [ ] **Hapus booking percobaan** di Supabase Table Editor → tabel `bookings`, baris dengan `guest_name = "TEST DELETE ME"` (tanggal dummy 2099-01-01 s/d 2099-01-02), dibuat saat pengujian end-to-end
+- [ ] Push project ke GitHub (`.env` sudah dipastikan ke-ignore, `.env.example` ikut di-push sebagai referensi)
+- [ ] Deploy ke hosting (Vercel / Netlify / cPanel) — perlu isi env var `VITE_SUPABASE_URL` & `VITE_SUPABASE_ANON_KEY` juga di dashboard hosting, bukan cuma lokal
 - [ ] (Opsional, nanti) Panel admin kelola booking — untuk saat ini pakai Table Editor Supabase langsung

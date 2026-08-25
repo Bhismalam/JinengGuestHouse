@@ -27,7 +27,11 @@ Dokumen ini digunakan untuk melacak daftar tugas (tasks) yang harus dibuat, dipe
 - [x] Tambah `.gitignore` (sebelumnya tidak ada) supaya `.env` tidak iksut ter-push ke GitHub
 
 ## Belum Selesai ⏳
-- [ ] **Hapus booking percobaan** di Supabase Table Editor → tabel `bookings`, baris dengan `guest_name = "TEST DELETE ME"` (tanggal dummy 2099-01-01 s/d 2099-01-02), dibuat saat pengujian end-to-end
-- [ ] Push project ke GitHub (`.env` sudah dipastikan ke-ignore, `.env.example` ikut di-push sebagai referensi)
+- [x] **Hapus booking percobaan** di Supabase Table Editor → tabel `bookings`, baris dengan `guest_name = "TEST DELETE ME"` (tanggal dummy 2099-01-01 s/d 2099-01-02), dibuat saat pengujian end-to-end
+- [x] Push project ke GitHub (`.env` sudah dipastikan ke-ignore, `.env.example` ikut di-push sebagai referensi)
 - [ ] Deploy ke hosting (Vercel / Netlify / cPanel) — perlu isi env var `VITE_SUPABASE_URL` & `VITE_SUPABASE_ANON_KEY` juga di dashboard hosting, bukan cuma lokal
-- [ ] (Opsional, nanti) Panel admin kelola booking — untuk saat ini pakai Table Editor Supabase langsung
+- [ ] (Opsional, nanti) Panel admin kelola booking — untuk saat ini pakai Table Editor Supabase langsung. Rencana kalau dikembangkan:
+  - Halaman baru `admin.html` (pola sama seperti `index.html`/`checkout.html`, statis + reuse `supabaseClient.js`)
+  - Login pakai Supabase Auth (1 akun admin, email/password)
+  - Tambah RLS policy baru: hanya role `authenticated` (akun admin) yang boleh SELECT/UPDATE/DELETE tabel `bookings` (saat ini publik cuma insert-only)
+  - Tampilan daftar booking (tabel/kartu) + tombol aksi cepat "Confirm" / "Cancel" langsung dari halaman, tidak perlu buka dashboard Supabase

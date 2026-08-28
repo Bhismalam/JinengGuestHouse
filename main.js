@@ -153,7 +153,7 @@ if (checkInInput && checkOutInput) {
         <a
           href="./checkout.html?checkin=${checkInDate}&checkout=${checkOutDate}&quantity=${rooms}"
           class="inline-block bg-primary text-on-primary px-6 py-2.5 rounded-full font-body-md hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 shadow-md"
-          >Lanjutkan ke Booking</a
+          >Continue to Booking</a
         >
       `;
     } else {
